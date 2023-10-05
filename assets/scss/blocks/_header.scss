@@ -1,0 +1,64 @@
+header {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    &__top {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: #07c4e8;
+
+        span, a {
+            font-size: 14px;
+        }
+
+        .container {
+            @include d-flex($j-content: space-between);
+        }
+    }
+
+    &__schedule {
+        @include d-flex($column-gap: 5px);
+        cursor: default;
+
+        img {
+            width: 16px;
+        }
+    }
+
+    &__contacts {
+        @include d-flex($column-gap: 15px);
+
+        > a {
+            cursor: pointer;
+        }
+
+        &-item {
+            @include d-flex();
+        }
+    }
+
+    &__phone {
+        @include d-flex();
+    }
+
+    &__email {
+        @include d-flex($column-gap: 5px);
+    }
+
+    &__lang-btn {
+        @include d-flex($column-gap: 5px);
+        padding: 0;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+
+        img {
+            width: 16px;
+        }
+    }
+
+    &__img {
+        width: 20px;
+    }
+}
