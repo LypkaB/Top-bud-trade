@@ -2,12 +2,13 @@
     &__top {
         padding-top: 5px;
         padding-bottom: 5px;
-        background-color: #07c4e8;
+        background-color: $bg-grafite;
         position: relative;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
         span, a {
             font-size: 14px;
+            color: white;
         }
 
         .container {
@@ -24,26 +25,6 @@
         }
     }
 
-    &__contacts {
-        @include d-flex($column-gap: 15px);
-
-        > a {
-            cursor: pointer;
-        }
-
-        &-item {
-            @include d-flex();
-        }
-    }
-
-    &__phone {
-        @include d-flex();
-    }
-
-    &__email {
-        @include d-flex($column-gap: 5px);
-    }
-
     &__lang-btn {
         @include d-flex($column-gap: 5px);
         padding: 0;
@@ -56,16 +37,26 @@
         }
     }
 
-    &__img {
-        width: 20px;
+    &__content {
+        margin-top: 10px;
+        margin-bottom: 6px;
+
+        .container {
+            @include d-flex($j-content: space-between);
+        }
     }
 
     &__logo {
         @include d-flex($column-gap: 10px);
 
+        img {
+            width: 120px;
+        }
+
         h2 {
             font-size: 16px;
             font-weight: 400;
+            color: #191919;
             cursor: default;
 
             span {
@@ -74,40 +65,22 @@
         }
     }
 
-    &__content-inner {
-        @include d-flex($j-content: space-between);
-        margin-top: 10px;
-        margin-bottom: 10px;
-
-        .menu ul {
-            @include d-flex($column-gap: 35px);
-
-            a {
-                padding: 7px 14px;
-                border-radius: 10px;
-
-                &:hover {
-                    background-color: darken($bg-bright-blue, 2%);
-                }
-            }
-        }
+    &__contacts {
+        @include d-flex($a-items: end, $f-direction: column);
+        row-gap: 10px;
     }
 
-    &__catalog-menu {
-        ul {
-            @include d-flex($j-content: space-between);
-        }
+    &__phone,
+    &__email {
+        @include d-flex();
+        color: $sub-text-color;
+    }
 
-        a {
-            padding: 7px 14px;
-            background-color: white;
-            border: 1px solid $border-blue;
-            border-radius: 10px;
-            font-size: 14px;
+    &__email {
+        column-gap: 5px
+    }
 
-            &:hover {
-                background-color: $bg-bright-blue;
-            }
-        }
+    &__icon {
+        width: 20px;
     }
 }

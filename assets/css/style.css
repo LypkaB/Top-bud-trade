@@ -48,8 +48,7 @@
 body {
   font-family: "FiraSans", sans-serif;
   font-weight: 400;
-  color: #191919;
-  background-color: #eff3f8;
+  color: white;
 }
 
 .container {
@@ -85,7 +84,7 @@ h3 {
 .header__top {
   padding-top: 5px;
   padding-bottom: 5px;
-  background-color: #07c4e8;
+  background-color: #464952;
   position: relative;
   -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -94,6 +93,7 @@ h3 {
 .header__top span,
 .header__top a {
   font-size: 14px;
+  color: white;
 }
 
 .header__top .container {
@@ -125,52 +125,6 @@ h3 {
   width: 16px;
 }
 
-.header__contacts {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-column-gap: 15px;
-  -moz-column-gap: 15px;
-  column-gap: 15px;
-}
-
-.header__contacts > a {
-  cursor: pointer;
-}
-
-.header__contacts-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.header__phone {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.header__email {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-column-gap: 5px;
-  -moz-column-gap: 5px;
-  column-gap: 5px;
-}
-
 .header__lang-btn {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -191,8 +145,21 @@ h3 {
   width: 16px;
 }
 
-.header__img {
-  width: 20px;
+.header__content {
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+
+.header__content .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .header__logo {
@@ -207,9 +174,14 @@ h3 {
   column-gap: 10px;
 }
 
+.header__logo img {
+  width: 120px;
+}
+
 .header__logo h2 {
   font-size: 16px;
   font-weight: 400;
+  color: #191919;
   cursor: default;
 }
 
@@ -217,61 +189,63 @@ h3 {
   color: #73879e;
 }
 
-.header__content-inner {
+.header__contacts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.header__phone,
+.header__email {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  color: #73879e;
 }
 
-.header__content-inner .menu ul {
+.header__email {
+  -webkit-column-gap: 5px;
+  -moz-column-gap: 5px;
+  column-gap: 5px;
+}
+
+.header__icon {
+  width: 20px;
+}
+
+.main-menu {
+  background-color: #464952;
+  padding-top: 8px;
+  padding-bottom: 7px;
+}
+
+.main-menu ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-column-gap: 35px;
-  -moz-column-gap: 35px;
-  column-gap: 35px;
+  -webkit-column-gap: 10px;
+  -moz-column-gap: 10px;
+  column-gap: 10px;
 }
 
-.header__content-inner .menu ul a {
+.main-menu a {
   padding: 7px 14px;
-  border-radius: 10px;
 }
 
-.header__content-inner .menu ul a:hover {
-  background-color: #d9ebff;
-}
-
-.header__catalog-menu ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.header__catalog-menu a {
-  padding: 7px 14px;
-  background-color: white;
-  border: 1px solid #c7e0ff;
-  border-radius: 10px;
-  font-size: 14px;
-}
-
-.header__catalog-menu a:hover {
-  background-color: #e3f0ff;
+.main-menu a:hover {
+  background-color: #73879e;
 }

@@ -1,0 +1,17 @@
+.main-menu {
+    background-color: $bg-grafite;
+    padding-top: 8px;
+    padding-bottom: 7px;
+
+    ul {
+        @include d-flex($column-gap: 10px);
+    }
+
+    a {
+        padding: 7px 14px;
+
+        &:hover {
+            background-color: $sub-text-color;
+        }
+    }
+}
