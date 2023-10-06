@@ -68,15 +68,27 @@ img {
   max-width: 100%;
 }
 
-header {
-  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
 }
 
 .header__top {
   padding-top: 5px;
   padding-bottom: 5px;
   background-color: #07c4e8;
+  position: relative;
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .header__top span,
@@ -181,4 +193,85 @@ header {
 
 .header__img {
   width: 20px;
+}
+
+.header__logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-column-gap: 10px;
+  -moz-column-gap: 10px;
+  column-gap: 10px;
+}
+
+.header__logo h2 {
+  font-size: 16px;
+  font-weight: 400;
+  cursor: default;
+}
+
+.header__logo h2 span {
+  color: #73879e;
+}
+
+.header__content-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.header__content-inner .menu ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-column-gap: 35px;
+  -moz-column-gap: 35px;
+  column-gap: 35px;
+}
+
+.header__content-inner .menu ul a {
+  padding: 7px 14px;
+  border-radius: 10px;
+}
+
+.header__content-inner .menu ul a:hover {
+  background-color: #d9ebff;
+}
+
+.header__catalog-menu ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.header__catalog-menu a {
+  padding: 7px 14px;
+  background-color: white;
+  border: 1px solid #c7e0ff;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.header__catalog-menu a:hover {
+  background-color: #e3f0ff;
 }

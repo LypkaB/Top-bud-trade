@@ -59,4 +59,55 @@
     &__img {
         width: 20px;
     }
+
+    &__logo {
+        @include d-flex($column-gap: 10px);
+
+        h2 {
+            font-size: 16px;
+            font-weight: 400;
+            cursor: default;
+
+            span {
+                color: $sub-text-color;
+            }
+        }
+    }
+
+    &__content-inner {
+        @include d-flex($j-content: space-between);
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        .menu ul {
+            @include d-flex($column-gap: 35px);
+
+            a {
+                padding: 7px 14px;
+                border-radius: 10px;
+
+                &:hover {
+                    background-color: darken($bg-bright-blue, 2%);
+                }
+            }
+        }
+    }
+
+    &__catalog-menu {
+        ul {
+            @include d-flex($j-content: space-between);
+        }
+
+        a {
+            padding: 7px 14px;
+            background-color: white;
+            border: 1px solid $border-blue;
+            border-radius: 10px;
+            font-size: 14px;
+
+            &:hover {
+                background-color: $bg-bright-blue;
+            }
+        }
+    }
 }
