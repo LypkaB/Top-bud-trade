@@ -1,12 +1,10 @@
-header {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 .header {
     &__top {
         padding-top: 5px;
         padding-bottom: 5px;
         background-color: #07c4e8;
+        position: relative;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
         span, a {
             font-size: 14px;
