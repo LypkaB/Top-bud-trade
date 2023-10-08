@@ -263,6 +263,11 @@ h3 {
   color: #73879e;
 }
 
+.header__phone:hover,
+.header__email:hover {
+  color: #464952;
+}
+
 .header__email {
   -webkit-column-gap: 5px;
   -moz-column-gap: 5px;

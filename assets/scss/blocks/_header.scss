@@ -105,6 +105,10 @@
     &__email {
         @include d-flex();
         color: $sub-text-color;
+
+        &:hover {
+            color: $bg-grafite;
+        }
     }
 
     &__email {
