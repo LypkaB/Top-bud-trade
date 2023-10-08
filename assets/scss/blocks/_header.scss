@@ -65,6 +65,37 @@
         }
     }
 
+    &__search {
+        position: relative;
+
+        &::after {
+            content: '';
+            width: 18px;
+            height: 18px;
+            background: url("../images/icons/icon__search.svg") no-repeat center;
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        input {
+            margin: 0;
+            padding: 10px 50px 10px 15px;
+            border: 1px solid $sub-text-color;
+            border-radius: 6px;
+
+            &:focus {
+                outline: 1px solid $bg-grafite;
+            }
+
+            &::placeholder {
+                font-size: 14px;
+            }
+        }
+    }
+
     &__contacts {
         @include d-flex($a-items: end, $f-direction: column);
         row-gap: 10px;

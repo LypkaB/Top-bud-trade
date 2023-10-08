@@ -189,6 +189,55 @@ h3 {
   color: #73879e;
 }
 
+.header__search {
+  position: relative;
+}
+
+.header__search::after {
+  content: "";
+  width: 18px;
+  height: 18px;
+  background: url("../images/icons/icon__search.svg") no-repeat center;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.header__search input {
+  margin: 0;
+  padding: 10px 50px 10px 15px;
+  border: 1px solid #73879e;
+  border-radius: 6px;
+}
+
+.header__search input:focus {
+  outline: 1px solid #464952;
+}
+
+.header__search input::-webkit-input-placeholder {
+  font-size: 14px;
+}
+
+.header__search input::-moz-placeholder {
+  font-size: 14px;
+}
+
+.header__search input:-ms-input-placeholder {
+  font-size: 14px;
+}
+
+.header__search input::-ms-input-placeholder {
+  font-size: 14px;
+}
+
+.header__search input::placeholder {
+  font-size: 14px;
+}
+
 .header__contacts {
   display: -webkit-box;
   display: -ms-flexbox;
