@@ -14,7 +14,7 @@
                 background-color: $sub-text-color;
             }
 
-            &.main-menu__catalog-dropdown {
+            &.main-menu__catalog-link {
                 padding-left: 30px;
             }
         }
@@ -23,9 +23,13 @@
     &__catalog {
         &:hover > ul > li {
             display: block;
+
+            &:hover > ul > li {
+                display: block;
+            }
         }
 
-        &-dropdown {
+        &-link {
             position: relative;
 
             &::before {
@@ -43,7 +47,7 @@
         > ul {
             background-color: $bg-grafite;
             position: absolute;
-            top: 33px;
+            top: 34px;
 
             li {
                 display: none;
@@ -52,6 +56,36 @@
 
                 &:hover {
                     background-color: $sub-text-color;
+                }
+
+                + li {
+                    border-top: 1px solid $sub-text-color
+                }
+
+                > ul {
+                    background-color: $bg-grafite;
+                    border-width: 0 1px;
+                    border-style: solid;
+                    border-color: $sub-text-color;
+                    position: absolute;
+                    top: 0;
+                    right: -75px;
+                }
+            }
+
+            > li {
+                padding-right: 30px;
+                position: relative;
+
+                &::after {
+                    content: "";
+                    width: 14px;
+                    height: 14px;
+                    background: url("../images/icons/icon__chevron-right.svg") no-repeat center;
+                    position: absolute;
+                    top: 50%;
+                    right: 8px;
+                    transform: translateY(-50%);
                 }
             }
         }

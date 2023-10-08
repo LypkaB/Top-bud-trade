@@ -310,7 +310,7 @@ h3 {
   background-color: #73879e;
 }
 
-.main-menu__panel > ul > li > a.main-menu__catalog-dropdown {
+.main-menu__panel > ul > li > a.main-menu__catalog-link {
   padding-left: 30px;
 }
 
@@ -318,11 +318,15 @@ h3 {
   display: block;
 }
 
-.main-menu__catalog-dropdown {
+.main-menu__catalog:hover > ul > li:hover > ul > li {
+  display: block;
+}
+
+.main-menu__catalog-link {
   position: relative;
 }
 
-.main-menu__catalog-dropdown::before {
+.main-menu__catalog-link::before {
   content: "";
   width: 20px;
   height: 20px;
@@ -338,7 +342,7 @@ h3 {
 .main-menu__catalog > ul {
   background-color: #464952;
   position: absolute;
-  top: 33px;
+  top: 34px;
 }
 
 .main-menu__catalog > ul li {
@@ -349,4 +353,36 @@ h3 {
 
 .main-menu__catalog > ul li:hover {
   background-color: #73879e;
+}
+
+.main-menu__catalog > ul li + li {
+  border-top: 1px solid #73879e;
+}
+
+.main-menu__catalog > ul li > ul {
+  background-color: #464952;
+  border-width: 0 1px;
+  border-style: solid;
+  border-color: #73879e;
+  position: absolute;
+  top: 0;
+  right: -75px;
+}
+
+.main-menu__catalog > ul > li {
+  padding-right: 30px;
+  position: relative;
+}
+
+.main-menu__catalog > ul > li::after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background: url("../images/icons/icon__chevron-right.svg") no-repeat center;
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
