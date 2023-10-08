@@ -27,10 +27,6 @@
 
     &__lang-btn {
         @include d-flex($column-gap: 5px);
-        padding: 0;
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
 
         img {
             width: 16px;
@@ -68,18 +64,6 @@
     &__search {
         position: relative;
 
-        &::after {
-            content: '';
-            width: 18px;
-            height: 18px;
-            background: url("../images/icons/icon__search.svg") no-repeat center;
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            cursor: pointer;
-        }
-
         input {
             margin: 0;
             padding: 10px 50px 10px 15px;
@@ -92,6 +76,20 @@
 
             &::placeholder {
                 font-size: 14px;
+            }
+        }
+
+        button {
+            padding: 9px;
+            border-radius: 6px;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+
+            img {
+                position: relative;
+                top: 2px;
             }
         }
     }
