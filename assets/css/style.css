@@ -282,9 +282,10 @@ h3 {
   background-color: #464952;
   padding-top: 8px;
   padding-bottom: 7px;
+  position: relative;
 }
 
-.main-menu ul {
+.main-menu__panel > ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -296,10 +297,51 @@ h3 {
   column-gap: 10px;
 }
 
-.main-menu a {
+.main-menu__panel > ul > li > a {
   padding: 7px 14px;
 }
 
-.main-menu a:hover {
+.main-menu__panel > ul > li > a:hover {
+  background-color: #73879e;
+}
+
+.main-menu__panel > ul > li > a.main-menu__catalog-dropdown {
+  padding-left: 30px;
+}
+
+.main-menu__catalog:hover > ul > li {
+  display: block;
+}
+
+.main-menu__catalog-dropdown {
+  position: relative;
+}
+
+.main-menu__catalog-dropdown::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: url("../images/icons/icon__list.svg") no-repeat center;
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.main-menu__catalog > ul {
+  background-color: #464952;
+  position: absolute;
+  top: 33px;
+}
+
+.main-menu__catalog > ul li {
+  display: none;
+  padding: 7px 14px;
+  cursor: pointer;
+}
+
+.main-menu__catalog > ul li:hover {
   background-color: #73879e;
 }
