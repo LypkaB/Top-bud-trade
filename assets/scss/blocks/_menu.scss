@@ -45,13 +45,13 @@
         }
 
         > ul {
-            background-color: $bg-grafite;
             position: absolute;
             top: 34px;
 
             li {
                 display: none;
                 padding: 7px 14px;
+                background-color: $bg-grafite;
                 cursor: pointer;
 
                 &:hover {
@@ -69,7 +69,12 @@
                     border-color: $sub-text-color;
                     position: absolute;
                     top: 0;
-                    right: -75px;
+                    left: 100%;
+                    z-index: 9;
+                }
+
+                a {
+                    white-space: nowrap;
                 }
             }
 
