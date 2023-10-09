@@ -71,6 +71,10 @@
                     top: 0;
                     left: 100%;
                     z-index: 9;
+
+                    > li {
+                        animation: smoothShowDown 1s forwards;
+                    }
                 }
 
                 a {
@@ -81,6 +85,8 @@
             > li {
                 padding-right: 30px;
                 position: relative;
+
+                animation: smoothShowDown 1s forwards;
 
                 &::after {
                     content: "";

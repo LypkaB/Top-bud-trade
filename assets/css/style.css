@@ -340,7 +340,6 @@ h3 {
 }
 
 .main-menu__catalog > ul {
-  background-color: #464952;
   position: absolute;
   top: 34px;
 }
@@ -348,6 +347,7 @@ h3 {
 .main-menu__catalog > ul li {
   display: none;
   padding: 7px 14px;
+  background-color: #464952;
   cursor: pointer;
 }
 
@@ -366,12 +366,24 @@ h3 {
   border-color: #73879e;
   position: absolute;
   top: 0;
-  right: -75px;
+  left: 100%;
+  z-index: 9;
+}
+
+.main-menu__catalog > ul li > ul > li {
+  -webkit-animation: smoothShowDown 1s forwards;
+  animation: smoothShowDown 1s forwards;
+}
+
+.main-menu__catalog > ul li a {
+  white-space: nowrap;
 }
 
 .main-menu__catalog > ul > li {
   padding-right: 30px;
   position: relative;
+  -webkit-animation: smoothShowDown 1s forwards;
+  animation: smoothShowDown 1s forwards;
 }
 
 .main-menu__catalog > ul > li::after {
@@ -385,4 +397,32 @@ h3 {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+@-webkit-keyframes smoothShowDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes smoothShowDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
 }
