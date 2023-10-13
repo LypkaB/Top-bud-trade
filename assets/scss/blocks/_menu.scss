@@ -1,5 +1,5 @@
 .main-menu {
-    background-color: $bg-grafite;
+    background-color: $main-grafite;
     padding-top: 8px;
     padding-bottom: 8px;
     position: relative;
@@ -11,7 +11,7 @@
             padding: 7px 14px;
 
             &:hover {
-                background-color: $sub-text-color;
+                background-color: $main-gray;
             }
 
             &.main-menu__catalog-link {
@@ -47,26 +47,27 @@
         > ul {
             position: absolute;
             top: 34px;
+            z-index: 9;
 
             li {
                 display: none;
                 padding: 7px 14px;
-                background-color: $bg-grafite;
+                background-color: $main-grafite;
                 cursor: pointer;
 
                 &:hover {
-                    background-color: $sub-text-color;
+                    background-color: $main-gray;
                 }
 
                 + li {
-                    border-top: 1px solid $sub-text-color
+                    border-top: 1px solid $main-gray
                 }
 
                 > ul {
-                    background-color: $bg-grafite;
+                    background-color: $main-grafite;
                     border-width: 0 1px;
                     border-style: solid;
-                    border-color: $sub-text-color;
+                    border-color: $main-gray;
                     position: absolute;
                     top: 0;
                     left: 100%;

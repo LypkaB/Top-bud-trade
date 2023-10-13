@@ -2,7 +2,7 @@
     &__top {
         padding-top: 5px;
         padding-bottom: 5px;
-        background-color: $bg-grafite;
+        background-color: $main-grafite;
         position: relative;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
@@ -51,12 +51,11 @@
 
         h2 {
             font-size: 16px;
-            font-weight: 400;
             color: #191919;
             cursor: default;
 
             span {
-                color: $sub-text-color;
+                color: $main-gray;
             }
         }
     }
@@ -67,11 +66,11 @@
         input {
             margin: 0;
             padding: 10px 50px 10px 15px;
-            border: 1px solid $sub-text-color;
+            border: 1px solid $main-gray;
             border-radius: 6px;
 
             &:focus {
-                outline: 1px solid $bg-grafite;
+                outline: 1px solid $main-grafite;
             }
 
             &::placeholder {
@@ -102,10 +101,10 @@
     &__phone,
     &__email {
         @include d-flex();
-        color: $sub-text-color;
+        color: $main-gray;
 
         &:hover {
-            color: $bg-grafite;
+            color: $main-grafite;
             animation: shake 0.6s ease-in-out;
         }
     }

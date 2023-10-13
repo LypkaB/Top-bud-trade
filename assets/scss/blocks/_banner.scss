@@ -1,0 +1,57 @@
+.banner {
+    .container {
+        max-width: 2560px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    &__swiper {
+        height: 30rem;
+    }
+
+    .swiper {
+        &-slide {
+            @include d-flex($j-content: center, $f-direction: column);
+            padding-left: 150px;
+            padding-right: 150px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            text-align: center;
+            cursor: default;
+            position: relative;
+
+            h2 {
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                line-height: 30px;
+            }
+        }
+
+        &-button-prev,
+        &-button-next {
+            width: 30px;
+            height: 30px;
+            background-color: $main-grafite;
+            border-radius: 5px;
+
+            &::after {
+                font-size: 18px;
+                font-weight: 700;
+                color: $main-gray;
+            }
+
+            &:hover::after {
+                color: white;
+            }
+        }
+
+        &-button-prev {
+            top: 54%;
+            left: auto;
+            right: 10px;
+        }
+    }
+}

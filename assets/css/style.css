@@ -45,6 +45,10 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: "FiraSans", sans-serif;
   font-weight: 400;
@@ -86,6 +90,20 @@ h2,
 h3 {
   margin: 0;
   padding: 0;
+}
+
+h2,
+h3 {
+  font-weight: 400;
+}
+
+.brightness-overlay::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
 }
 
 .header__top {
@@ -183,7 +201,6 @@ h3 {
 
 .header__logo h2 {
   font-size: 16px;
-  font-weight: 400;
   color: #191919;
   cursor: default;
 }
@@ -344,6 +361,7 @@ h3 {
 .main-menu__catalog > ul {
   position: absolute;
   top: 34px;
+  z-index: 9;
 }
 
 .main-menu__catalog > ul li {
@@ -399,6 +417,74 @@ h3 {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+.banner .container {
+  max-width: 2560px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.banner__swiper {
+  height: 30rem;
+}
+
+.banner .swiper-slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-left: 150px;
+  padding-right: 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-align: center;
+  cursor: default;
+  position: relative;
+}
+
+.banner .swiper-slide h2 {
+  margin-bottom: 30px;
+}
+
+.banner .swiper-slide h3 {
+  line-height: 30px;
+}
+
+.banner .swiper-button-prev,
+.banner .swiper-button-next {
+  width: 30px;
+  height: 30px;
+  background-color: #464952;
+  border-radius: 5px;
+}
+
+.banner .swiper-button-prev::after,
+.banner .swiper-button-next::after {
+  font-size: 18px;
+  font-weight: 700;
+  color: #73879e;
+}
+
+.banner .swiper-button-prev:hover::after,
+.banner .swiper-button-next:hover::after {
+  color: white;
+}
+
+.banner .swiper-button-prev {
+  top: 54%;
+  left: auto;
+  right: 10px;
 }
 
 @-webkit-keyframes smoothShowDown {
