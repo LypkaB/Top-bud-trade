@@ -1,11 +1,6 @@
 .banner {
+    margin: 0 auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-
-    .container {
-        max-width: 2560px;
-        padding-left: 0;
-        padding-right: 0;
-    }
 
     &__swiper {
         height: 30rem;
@@ -22,6 +17,10 @@
             text-align: center;
             cursor: default;
             position: relative;
+
+            &__inner {
+                max-width: 1440px;
+            }
 
             h2 {
                 margin-bottom: 30px;

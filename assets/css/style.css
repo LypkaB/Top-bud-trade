@@ -422,14 +422,9 @@ h3 {
 }
 
 .banner {
+  margin: 0 auto;
   -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
-
-.banner .container {
-  max-width: 2560px;
-  padding-left: 0;
-  padding-right: 0;
 }
 
 .banner__swiper {
@@ -458,6 +453,10 @@ h3 {
   text-align: center;
   cursor: default;
   position: relative;
+}
+
+.banner .swiper-slide__inner {
+  max-width: 1440px;
 }
 
 .banner .swiper-slide h2 {
