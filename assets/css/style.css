@@ -92,6 +92,7 @@ h3 {
   padding: 0;
 }
 
+h1,
 h2,
 h3 {
   font-weight: 400;
@@ -491,6 +492,23 @@ h3 {
   top: 54%;
   left: auto;
   right: 10px;
+}
+
+.main-title {
+  background-color: #eff1f4;
+  position: relative;
+  z-index: -1;
+}
+
+.main-title .container {
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  text-align: center;
+}
+
+.main-title h1 {
+  font-size: 28px;
+  color: #464952;
 }
 
 @-webkit-keyframes smoothShowDown {

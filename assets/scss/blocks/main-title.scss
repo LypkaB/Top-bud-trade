@@ -1,0 +1,16 @@
+.main-title {
+    background-color: #eff1f4;
+    position: relative;
+    z-index: -1;
+
+    .container {
+        padding-top: 10rem;
+        padding-bottom: 10rem;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 28px;
+        color: $main-grafite;
+    }
+}
