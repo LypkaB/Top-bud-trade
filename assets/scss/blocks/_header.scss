@@ -99,7 +99,8 @@
     }
 
     &__phone,
-    &__email {
+    &__email,
+    &__recall {
         @include d-flex();
         color: $main-gray;
 

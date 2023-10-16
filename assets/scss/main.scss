@@ -63,5 +63,13 @@ h1, h2, h3 {
     z-index: -1;
 }
 
+.hide {
+    display: none;
+}
+
+.overflow-hide {
+    overflow: hidden;
+}
+
 @import 'blocks/blocks';
 @import 'abstracts/animation';

@@ -107,6 +107,14 @@ h3 {
   z-index: -1;
 }
 
+.hide {
+  display: none;
+}
+
+.overflow-hide {
+  overflow: hidden;
+}
+
 .header__top {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -276,7 +284,8 @@ h3 {
 }
 
 .header__phone,
-.header__email {
+.header__email,
+.header__recall {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -287,7 +296,8 @@ h3 {
 }
 
 .header__phone:hover,
-.header__email:hover {
+.header__email:hover,
+.header__recall:hover {
   color: #464952;
   -webkit-animation: shake 0.6s ease-in-out;
   animation: shake 0.6s ease-in-out;
@@ -509,6 +519,167 @@ h3 {
 .main-title h1 {
   font-size: 28px;
   color: #464952;
+}
+
+.recall__modal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  overflow: auto;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+.recall__modal-content {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 350px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 75px 30px 30px;
+  background-color: #464952;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.recall__modal-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 10px 30px;
+  background-color: #73879e;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+.recall__modal-close {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.recall__modal-close::before,
+.recall__modal-close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 2px;
+  background-color: white;
+}
+
+.recall__modal-close::before {
+  -webkit-transform: translate(-50%, -50%) rotate(45deg);
+  -ms-transform: translate(-50%, -50%) rotate(45deg);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.recall__modal-close::after {
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+  -ms-transform: translate(-50%, -50%) rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.recall__modal-close:hover::before,
+.recall__modal-close:hover::after {
+  background-color: #464952;
+  -webkit-transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.recall__form-field {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.recall__form label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+  height: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 14px;
+  color: #73879e;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.recall__form label span::after {
+  content: "*";
+  position: absolute;
+  padding-left: 3px;
+  color: red;
+}
+
+.recall__form input,
+.recall__form textarea {
+  width: 100%;
+  padding: 7px 5px;
+  border-radius: 5px;
+  border: none;
+  font-size: 14px;
+  color: #464952;
+  outline: none;
+}
+
+.recall__form textarea {
+  resize: none;
+}
+
+.recall__form-send {
+  cursor: pointer;
+}
+
+.recall__form-send:hover {
+  color: white;
+  background-color: #73879e;
+  -webkit-transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.recall__form .field-up {
+  top: -14px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  color: white;
 }
 
 @-webkit-keyframes smoothShowDown {

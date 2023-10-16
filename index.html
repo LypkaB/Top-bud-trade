@@ -66,6 +66,7 @@
                         <img class="header__icon" src="assets/images/icons/icon__mail.svg" alt="Пошта" title="Пошта">
                         topbudtrade1@gmail.com
                     </a>
+                    <button class="header__recall">Передзвонити вам?</button>
                 </div>
             </div>
         </div>
@@ -179,6 +180,40 @@
             </h1>
         </div>
     </section>
+
+    <div class="recall__modal hide">
+        <div class="recall__modal-content">
+            <div class="recall__modal-header">
+                <span>Форма зворотного зв'язку</span>
+                <div class="recall__modal-close"></div>
+            </div>
+
+            <form action="" class="recall__form">
+                <div class="recall__form-field">
+                    <label for="email">
+                        <span>Ваша пошта</span>
+                    </label>
+                    <input id="email" type="text">
+                </div>
+
+                <div class="recall__form-field">
+                    <label for="name">
+                        <span>Ваше ім'я</span>
+                    </label>
+                    <input id="name" type="text">
+                </div>
+
+                <div class="recall__form-field">
+                    <label for="message">
+                        <span>Ваше повідомлення</span>
+                    </label>
+                    <textarea id="message" spellcheck="false"></textarea>
+                </div>
+
+                <input class="recall__form-send" type="submit" value="Надіслати">
+            </form>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="./assets/js/main-script.js"></script>
