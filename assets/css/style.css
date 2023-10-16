@@ -399,7 +399,7 @@ h3 {
 
 .main-menu__catalog > ul li > ul {
   background-color: #464952;
-  border-width: 0 1px;
+  border-width: 0 0 0 1px;
   border-style: solid;
   border-color: #73879e;
   position: absolute;
