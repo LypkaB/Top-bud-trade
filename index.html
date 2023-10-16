@@ -51,7 +51,6 @@
 
                 <div class="header__search">
                     <input type="text" placeholder="Пошук">
-
                     <button>
                         <img src="./assets/images/icons/icon__search.svg" alt="Пошук">
                     </button>
@@ -66,7 +65,10 @@
                         <img class="header__icon" src="assets/images/icons/icon__mail.svg" alt="Пошта" title="Пошта">
                         topbudtrade1@gmail.com
                     </a>
-                    <button class="header__recall">Передзвонити вам?</button>
+                    <div class="header__recall">
+                        <img class="header__icon" src="assets/images/icons/icon__recall.svg" alt="Зворотній зв'язок" title="Зворотній зв'язок">
+                        <span>Передзвонити вам?</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -184,14 +186,14 @@
     <div class="recall__modal hide">
         <div class="recall__modal-content">
             <div class="recall__modal-header">
-                <span>Форма зворотного зв'язку</span>
+                <span>Форма зворотнього зв'язку</span>
                 <div class="recall__modal-close"></div>
             </div>
 
             <form action="" class="recall__form">
                 <div class="recall__form-field">
                     <label for="email">
-                        <span>Ваша пошта</span>
+                        <span>Ваш номер телефону</span>
                     </label>
                     <input id="email" type="text">
                 </div>
@@ -205,7 +207,7 @@
 
                 <div class="recall__form-field">
                     <label for="message">
-                        <span>Ваше повідомлення</span>
+                        <span>Зворотній зв'язок</span>
                     </label>
                     <textarea id="message" spellcheck="false"></textarea>
                 </div>

@@ -96,6 +96,10 @@
     &__contacts {
         @include d-flex($a-items: end, $f-direction: column);
         row-gap: 10px;
+
+        > * {
+            cursor: pointer;
+        }
     }
 
     &__phone,
@@ -110,7 +114,8 @@
         }
     }
 
-    &__email {
+    &__email,
+    &__recall {
         column-gap: 5px
     }
 
