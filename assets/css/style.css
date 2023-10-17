@@ -361,6 +361,10 @@ h3 {
   display: block;
 }
 
+.main-menu__catalog:hover > ul > li:hover > ul > li:hover > ul > li {
+  display: block;
+}
+
 .main-menu__catalog-link {
   position: relative;
 }
@@ -420,13 +424,16 @@ h3 {
 }
 
 .main-menu__catalog > ul > li {
-  padding-right: 30px;
   position: relative;
   -webkit-animation: smoothShowDown 1s forwards;
   animation: smoothShowDown 1s forwards;
 }
 
-.main-menu__catalog > ul > li::after {
+.main-menu .dropdown-chevron {
+  padding-right: 15px;
+}
+
+.main-menu .dropdown-chevron::after {
   content: "";
   width: 14px;
   height: 14px;
