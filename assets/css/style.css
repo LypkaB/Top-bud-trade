@@ -701,6 +701,12 @@ h3 {
   color: #464952;
 }
 
+.latest-products h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  cursor: default;
+}
+
 .latest-products__row {
   display: -webkit-box;
   display: -ms-flexbox;

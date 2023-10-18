@@ -7,6 +7,12 @@
         color: $main-grafite;
     }
 
+    h2 {
+        font-size: 32px;
+        margin-bottom: 30px;
+        cursor: default;
+    }
+
     &__row {
         display: flex;
         flex-direction: row;
