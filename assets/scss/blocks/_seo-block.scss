@@ -1,0 +1,14 @@
+.seo-block {
+    background-color: $main-grafite;
+    box-shadow: 0 -4px 5px -2px rgba(0, 0, 0, 0.5);
+
+    .container {
+        padding-top: 10rem;
+        padding-bottom: 10rem;
+        text-align: center;
+    }
+
+    span {
+        cursor: default;
+    }
+}
