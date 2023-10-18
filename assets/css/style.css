@@ -117,6 +117,23 @@ h3 {
   overflow: hidden;
 }
 
+.dropdown-chevron {
+  padding-right: 15px;
+}
+
+.dropdown-chevron::after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background: url("../images/icons/icon__chevron-right.svg") no-repeat center;
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
 .header__top {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -429,23 +446,6 @@ h3 {
   animation: smoothShowDown 1s forwards;
 }
 
-.main-menu .dropdown-chevron {
-  padding-right: 15px;
-}
-
-.main-menu .dropdown-chevron::after {
-  content: "";
-  width: 14px;
-  height: 14px;
-  background: url("../images/icons/icon__chevron-right.svg") no-repeat center;
-  position: absolute;
-  top: 50%;
-  right: 8px;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
 .banner {
   margin: 0 auto;
   -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
@@ -629,6 +629,32 @@ h3 {
   cursor: default;
 }
 
+.assortment__item > ul > li:hover ul {
+  height: var(--custom-height);
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.assortment__item > ul > li:hover ul > li {
+  display: block;
+}
+
+.assortment__item > ul > li > ul {
+  padding-left: 20px;
+  height: 0;
+  opacity: 0;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.assortment__item > ul > li > ul > li {
+  display: none;
+  -webkit-animation: smoothShowDown 1.8s forwards;
+  animation: smoothShowDown 1.8s forwards;
+}
+
 .assortment__item a {
   display: block;
   width: 100%;
@@ -652,19 +678,6 @@ h3 {
   position: absolute;
   top: 50%;
   left: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.assortment__item a::after {
-  content: "";
-  width: 14px;
-  height: 14px;
-  background: url("../images/icons/icon__chevron-right.svg") no-repeat center;
-  position: absolute;
-  top: 50%;
-  right: 5px;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);

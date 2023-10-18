@@ -68,6 +68,32 @@
             cursor: default;
         }
 
+        > ul > li {
+            &:hover {
+                ul {
+                    height: var(--custom-height);
+                    opacity: 1;
+                    transform: translateY(0);
+
+                    > li {
+                        display: block;
+                    }
+                }
+            }
+
+            > ul {
+                padding-left: 20px;
+                height: 0;
+                opacity: 0;
+                transition: all 1s ease;
+
+                > li {
+                    display: none;
+                    animation: smoothShowDown 1.8s forwards;
+                }
+            }
+        }
+
         a {
             display: block;
             width: 100%;
@@ -89,17 +115,6 @@
                 position: absolute;
                 top: 50%;
                 left: 0;
-                transform: translateY(-50%);
-            }
-
-            &::after {
-                content: "";
-                width: 14px;
-                height: 14px;
-                background: url("../images/icons/icon__chevron-right.svg") no-repeat center;
-                position: absolute;
-                top: 50%;
-                right: 5px;
                 transform: translateY(-50%);
             }
         }

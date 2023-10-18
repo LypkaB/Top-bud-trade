@@ -11,6 +11,18 @@ window.addEventListener('DOMContentLoaded', () => {
         },
     });
 
+    /*<----- Assortment ----->*/
+    const dropdownList = document.querySelectorAll('[data-height]');
+    if (dropdownList.length > 0) {
+        dropdownList.forEach((element) => {
+            const heightValue = element.getAttribute('data-height');
+
+            if (heightValue) {
+                element.style.setProperty('--custom-height', heightValue);
+            }
+        });
+    }
+
     /*<----- Recall modal ----->*/
     const fieldsRecallModal = document.querySelectorAll('.recall__form input, .recall__form textarea');
 

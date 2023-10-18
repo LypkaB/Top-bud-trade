@@ -71,5 +71,20 @@ h1, h2, h3 {
     overflow: hidden;
 }
 
+.dropdown-chevron {
+    padding-right: 15px;
+
+    &::after {
+        content: "";
+        width: 14px;
+        height: 14px;
+        background: url("../images/icons/icon__chevron-right.svg") no-repeat center;
+        position: absolute;
+        top: 50%;
+        right: 8px;
+        transform: translateY(-50%);
+    }
+}
+
 @import 'blocks/blocks';
 @import 'abstracts/animation';
