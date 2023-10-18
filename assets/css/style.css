@@ -542,7 +542,8 @@ h3 {
 }
 
 .assortment .container {
-  padding: 30px 40px 20px;
+  max-width: 1420px;
+  padding: 30px 28px 20px;
   background-color: white;
   border-radius: 4px;
 }
@@ -594,7 +595,7 @@ h3 {
   width: 100%;
   height: 100%;
   padding: 24px;
-  border: 1px solid #464952;
+  border: 1px solid #73879e;
   border-radius: 4px;
   -webkit-transition: background-color 250ms ease-in-out;
   transition: background-color 250ms ease-in-out;
@@ -681,6 +682,88 @@ h3 {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+.latest-products {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: #eff1f4;
+}
+
+.latest-products * {
+  color: #464952;
+}
+
+.latest-products__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-column-gap: 10px;
+  -moz-column-gap: 10px;
+  column-gap: 10px;
+}
+
+.latest-products__row + div {
+  margin-top: 10px;
+}
+
+.latest-products__item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 16px;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #73879e;
+  -webkit-box-shadow: 0 1px 4px rgba(55, 66, 74, 0.16);
+  box-shadow: 0 1px 4px rgba(55, 66, 74, 0.16);
+}
+
+.latest-products__item-header,
+.latest-products__item-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.latest-products__item-header {
+  margin-bottom: 15px;
+}
+
+.latest-products__item-header span:first-child {
+  margin-bottom: 5px;
+}
+
+.latest-products__item-header span:nth-child(2) {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.latest-products__item-content img {
+  width: 220px;
+  margin-bottom: 15px;
+}
+
+.latest-products__item-content span {
+  font-size: 14px;
+  color: #73879e;
 }
 
 .recall__modal {
