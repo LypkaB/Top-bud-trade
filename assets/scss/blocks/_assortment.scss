@@ -15,6 +15,7 @@
 
     &__title {
         @include title();
+        color: $main-grafite;
     }
 
     &__grid {
