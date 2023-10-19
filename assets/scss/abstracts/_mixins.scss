@@ -26,3 +26,15 @@
         column-gap: $column-gap;
     }
 }
+
+@mixin text-block-bg() {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: $bg-smooth-white;
+}
+
+@mixin title() {
+    font-size: 32px;
+    margin-bottom: 30px;
+    cursor: default;
+}

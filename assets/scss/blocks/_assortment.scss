@@ -3,7 +3,7 @@
     padding-top: 30px;
     padding-bottom: 30px;
     position: relative;
-    box-shadow: 0 -4px 5px -2px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.5);
 
     .container {
         max-width: 1420px;
@@ -14,10 +14,7 @@
     }
 
     &__title {
-        font-size: 32px;
-        color: $main-grafite;
-        margin-bottom: 30px;
-        cursor: default;
+        @include title();
     }
 
     &__grid {

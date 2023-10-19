@@ -1,0 +1,43 @@
+.benefits {
+    @include text-block-bg();
+
+    * {
+        color: $main-grafite;
+    }
+
+    h2 {
+        @include title();
+    }
+
+    &__content {
+        @include d-flex($j-content: space-between);
+    }
+
+    &__item {
+        @include d-flex($f-direction: column);
+        cursor: default;
+
+        &-icon {
+            @include d-flex();
+            padding: 10px;
+            background-color: $main-grafite;
+            border-radius: 50%;
+            margin-bottom: 15px;
+
+            img {
+                width: 50px;
+            }
+
+            .icon {
+                &-payment {
+                    padding: 4px;
+                }
+
+                &-fast-delivery {
+                    position: relative;
+                    top: -6px;
+                }
+            }
+        }
+    }
+}
