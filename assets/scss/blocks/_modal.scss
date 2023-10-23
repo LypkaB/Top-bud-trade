@@ -29,7 +29,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            @include d-flex($j-content: space-between);
+            @include flex($j-content: space-between);
             padding: 10px 30px;
             background-color: $main-gray;
             border-top-right-radius: 15px;

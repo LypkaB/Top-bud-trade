@@ -1,5 +1,5 @@
 .benefits {
-    @include text-block-bg();
+    @include text-block-bg($bg-smooth-white);
 
     * {
         color: $main-grafite;
@@ -10,15 +10,15 @@
     }
 
     &__content {
-        @include d-flex($j-content: space-between);
+        @include flex($j-content: space-between);
     }
 
     &__item {
-        @include d-flex($f-direction: column);
+        @include flex($f-direction: column);
         cursor: default;
 
         &-icon {
-            @include d-flex();
+            @include flex();
             padding: 10px;
             background-color: $main-grafite;
             border-radius: 50%;

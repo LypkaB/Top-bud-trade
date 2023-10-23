@@ -1,7 +1,5 @@
 .assortment {
-    background-color: $main-grafite;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    @include text-block-bg($main-grafite);
     position: relative;
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.5);
 
@@ -34,7 +32,7 @@
         }
 
         &-items {
-            @include d-flex($j-content: space-between, $f-direction: column);
+            @include flex($j-content: space-between, $f-direction: column);
             row-gap: 16px;
         }
     }

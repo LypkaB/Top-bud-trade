@@ -6,7 +6,7 @@
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5);
 
     &__panel > ul {
-        @include d-flex($column-gap: 10px);
+        @include flex($column-gap: 10px);
 
         > li > a {
             padding: 7px 14px;

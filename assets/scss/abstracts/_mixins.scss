@@ -10,7 +10,7 @@
     }
 }
 
-@mixin d-flex($a-items: center, $j-content: null, $f-direction: null, $column-gap: null) {
+@mixin flex($a-items: center, $j-content: null, $f-direction: null, $column-gap: null) {
     display: flex;
     align-items: $a-items;
 
@@ -27,10 +27,13 @@
     }
 }
 
-@mixin text-block-bg() {
+@mixin text-block-bg($background-color: null) {
     padding-top: 30px;
     padding-bottom: 30px;
-    background-color: $bg-smooth-white;
+
+    @if $background-color != null {
+        background-color: $background-color;
+    }
 }
 
 @mixin title() {

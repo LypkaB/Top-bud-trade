@@ -8,7 +8,7 @@
 
     .swiper {
         &-slide {
-            @include d-flex($j-content: center, $f-direction: column);
+            @include flex($j-content: center, $f-direction: column);
             padding-left: 150px;
             padding-right: 150px;
             background-size: cover;

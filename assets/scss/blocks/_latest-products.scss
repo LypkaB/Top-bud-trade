@@ -1,5 +1,5 @@
 .latest-products {
-    @include text-block-bg();
+    @include text-block-bg($bg-smooth-white);
 
     * {
         color: $main-grafite;
@@ -21,7 +21,7 @@
 
     &__item {
         width: 100%;
-        @include d-flex($a-items: start, $f-direction: column);
+        @include flex($a-items: start, $f-direction: column);
         padding: 16px;
         background: white;
         border-radius: 4px;

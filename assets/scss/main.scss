@@ -45,13 +45,50 @@ ul, li {
     list-style: none;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     margin: 0;
     padding: 0;
+    font-weight: 400;
 }
 
-h1, h2, h3 {
-    font-weight: 400;
+.page {
+    &__schedule {
+        @include flex($column-gap: 5px);
+        cursor: default !important;
+
+        img {
+            width: 16px !important;
+        }
+    }
+
+    &__contacts {
+        @include flex($a-items: end, $f-direction: column);
+        row-gap: 10px;
+
+        > a, > div {
+            @include flex($column-gap: 5px);
+            cursor: pointer;
+
+            img {
+                width: 20px;
+                height: 20px;
+
+                + img {
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        > a {
+            &:first-child {
+                column-gap: 0;
+            }
+
+            &:hover {
+                color: $main-gray;
+            }
+        }
+    }
 }
 
 .brightness-overlay::after {
