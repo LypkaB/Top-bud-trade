@@ -884,8 +884,8 @@ h4 {
 
 .footer {
   padding-top: 30px;
-  padding-bottom: 30px;
   background-color: #464952;
+  padding-bottom: 5px;
   position: relative;
   -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), 0 -4px 8px rgba(0, 0, 0, 0.5);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), 0 -4px 8px rgba(0, 0, 0, 0.5);
@@ -904,22 +904,14 @@ h4 {
   margin-bottom: 30px;
 }
 
-.footer__info .page__contacts,
-.footer__location {
-  margin-top: 40px;
-  row-gap: 20px;
-}
-
-.footer__info a,
-.footer__menu-nav a {
+.footer__info a {
   padding: 4px 8px;
   border-radius: 5px;
 }
 
-.footer__info a:hover,
-.footer__menu-nav a:hover {
-  color: white;
+.footer__info a:hover {
   background-color: #73879e;
+  color: white;
 }
 
 .footer__logo {
@@ -953,63 +945,24 @@ h4 {
   cursor: default;
 }
 
-.footer__location {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: end;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.footer__location a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.footer__contacts {
-  row-gap: 15px;
-}
-
-.footer__menu-nav > ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: start;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-left: -8px;
-}
-
-.footer__menu-nav > ul > li > a {
+.footer__menu > a {
   font-size: 18px;
 }
 
-.footer__menu-nav > ul > li > ul {
+.footer__menu > ul {
   padding-left: 10px;
 }
 
-.footer__menu-nav > ul > li > ul > li {
+.footer__menu > ul > li {
   margin-top: 15px;
 }
 
-.footer__menu-nav > ul > li > ul > li > a {
+.footer__menu > ul > li > a {
   padding: 4px 30px 4px 20px;
   position: relative;
 }
 
-.footer__menu-nav > ul > li > ul > li > a::before {
+.footer__menu > ul > li > a::before {
   content: "·";
   display: block;
   width: 20px;
@@ -1024,7 +977,7 @@ h4 {
   transform: translateY(-50%);
 }
 
-.footer__menu-nav > ul > li > ul > li > a::after {
+.footer__menu > ul > li > a::after {
   content: "";
   width: 14px;
   height: 14px;
@@ -1035,6 +988,18 @@ h4 {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+.footer__pages {
+  font-size: 18px;
+}
+
+.footer__pages li + li {
+  margin-top: 15px;
+}
+
+.footer .page__contacts {
+  row-gap: 15px;
 }
 
 .copyright {
