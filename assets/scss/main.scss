@@ -51,42 +51,40 @@ h1, h2, h3, h4 {
     font-weight: 400;
 }
 
-.page {
-    &__schedule {
+.schedule-content {
+    @include flex($column-gap: 5px);
+    cursor: default !important;
+
+    img {
+        width: 16px !important;
+    }
+}
+
+.contacts-links {
+    @include flex($a-items: end, $f-direction: column);
+    row-gap: 10px;
+
+    &--phone,
+    &--mail,
+    &--recall {
         @include flex($column-gap: 5px);
-        cursor: default !important;
+        cursor: pointer;
 
         img {
-            width: 16px !important;
+            width: 20px;
+            height: 20px;
+
+            + img {
+                margin-right: 5px;
+            }
         }
     }
 
-    &__contacts {
-        @include flex($a-items: end, $f-direction: column);
-        row-gap: 10px;
+    &--phone {
+        column-gap: 0;
 
-        > a, > div {
-            @include flex($column-gap: 5px);
-            cursor: pointer;
-
-            img {
-                width: 20px;
-                height: 20px;
-
-                + img {
-                    margin-right: 5px;
-                }
-            }
-        }
-
-        > a {
-            &:first-child {
-                column-gap: 0;
-            }
-
-            &:hover {
-                color: $main-gray;
-            }
+        &:hover {
+            color: $main-gray;
         }
     }
 }
@@ -109,7 +107,7 @@ h1, h2, h3, h4 {
 }
 
 .dropdown-chevron {
-    padding-right: 15px;
+    padding-right: 30px !important;
 
     &::after {
         content: "";

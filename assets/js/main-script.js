@@ -45,7 +45,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     const mainHtmlTag = document.documentElement;
-    const recallBtn = document.querySelector('.header__recall');
+    const recallBtn = document.querySelector('.contacts-links--recall');
     const recallModal = document.querySelector('.recall__modal');
     const recallCloseModal = document.querySelector('.recall__modal-close');
 

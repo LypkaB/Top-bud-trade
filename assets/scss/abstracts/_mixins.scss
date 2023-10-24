@@ -10,6 +10,27 @@
     }
 }
 
+@mixin block-bg($padding-top: 30px, $padding-bottom: 30px, $background-color: null, $box-shadow, $position: null) {
+    padding-top: $padding-top;
+    padding-bottom: $padding-bottom;
+
+    @if $background-color != null {
+        background-color: $background-color;
+    }
+
+    @if $box-shadow == 'top' {
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5);
+    } @else if ($box-shadow == 'bottom') {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    } @else if ($box-shadow == 'both-sides') {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    @if $position != null {
+        position: relative;
+    }
+}
+
 @mixin flex($a-items: center, $j-content: null, $f-direction: null, $column-gap: null) {
     display: flex;
     align-items: $a-items;
@@ -24,15 +45,6 @@
 
     @if $column-gap != null {
         column-gap: $column-gap;
-    }
-}
-
-@mixin text-block-bg($background-color: null) {
-    padding-top: 30px;
-    padding-bottom: 30px;
-
-    @if $background-color != null {
-        background-color: $background-color;
     }
 }
 

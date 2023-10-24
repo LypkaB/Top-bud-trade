@@ -1,16 +1,6 @@
 .header {
-    &__top {
-        padding-top: 5px;
-        padding-bottom: 5px;
-        background-color: $main-grafite;
-        position: relative;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-
-        span, a {
-            font-size: 14px;
-            color: white;
-        }
-
+    &__content--top,
+    &__content {
         .container {
             @include flex($j-content: space-between);
         }
@@ -28,8 +18,26 @@
         margin-top: 10px;
         margin-bottom: 6px;
 
-        .container {
-            @include flex($j-content: space-between);
+        &--top {
+            @include block-bg(5px, 5px, $main-grafite, 'bottom');
+
+            span {
+                font-size: 14px;
+                color: white;
+            }
+        }
+
+        .contacts-links {
+            &--phone,
+            &--mail,
+            &--recall {
+                color: $main-gray;
+
+                &:hover {
+                    color: $main-grafite;
+                    animation: shake 0.6s ease-in-out;
+                }
+            }
         }
     }
 
@@ -84,13 +92,71 @@
         }
     }
 
-    &__contacts {
-        > a, > div {
-            color: $main-gray;
+    &__menu {
+        @include block-bg(8px, 8px, $main-grafite, 'top', true);
 
-            &:hover {
-                color: $main-grafite;
-                animation: shake 0.6s ease-in-out;
+        &--list {
+            @include flex($column-gap: 10px);
+
+            a {
+                padding: 8px 14px;
+
+                &:hover {
+                    background-color: $main-gray;
+                }
+            }
+
+            &-dropdown {
+                &-item {
+                    li {
+                        background-color: $main-grafite;
+                        position: relative;
+
+                        > a {
+                            display: none;
+                        }
+                    }
+
+                    &:hover > ul > li > a {
+                        display: block;
+                    }
+                }
+
+                &-first {
+                    position: absolute;
+                    top: 34px;
+                    z-index: 9;
+
+                    a {
+                        border-top: 1px solid #73879e;
+                        border-left: 1px solid #73879e;
+                        white-space: nowrap;
+                        animation: smoothShowDown 1s forwards;
+                    }
+                }
+
+                &-second {
+                    position: absolute;
+                    top: 0;
+                    left: 100%;
+                    z-index: 9;
+                }
+            }
+        }
+
+        &--catalog {
+            padding-left: 30px !important;
+            position: relative;
+
+            &::before {
+                content: "";
+                width: 20px;
+                height: 20px;
+                background: url("../images/icons/icon__list.svg") no-repeat center;
+                position: absolute;
+                top: 50%;
+                left: 5px;
+                transform: translateY(-50%);
             }
         }
     }
