@@ -1,4 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
+    const mainHtmlTag = document.documentElement;
+
     const catalogLink = document.querySelector('.header__menu--catalog');
     catalogLink.href = 'javascript:void(0);';
     const headerMenuListFirst = document.querySelector('.header__menu--list-dropdown-first');
@@ -12,6 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     catalogLink.addEventListener('click', () => {
         headerMenuListFirst.classList.add('list_show-first');
+        mainHtmlTag.classList.add('overflow-hide');
     })
 
     nextBtnFirst.forEach(btn => {
@@ -53,11 +56,7 @@ window.addEventListener('DOMContentLoaded', () => {
     })
 
     closeMenuBtn.addEventListener('click', () => {
-        listDropdownFirstItems.forEach(li => {
-            li.classList.remove('list-items--first_move');
-        })
-
-        closeMenuBtn.closest('.header__menu--list-dropdown-first').classList.remove('list_show-first');
+        listDropdownFirstItems.forEach(li => li.classList.remove('list-items--first_move'))
 
         document.querySelectorAll('.header__menu--list-dropdown-second').forEach(list => {
             if (list.classList.contains('list_show-second')) list.classList.add('list_hide-second--non-visible');
@@ -82,6 +81,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
             }, 1200)
         })
+
+        headerMenuListFirst.classList.remove('list_show-first');
+        mainHtmlTag.classList.remove('overflow-hide');
     })
 
     /*<----- Presentation slider ----->*/
@@ -129,7 +131,6 @@ window.addEventListener('DOMContentLoaded', () => {
         field.addEventListener('blur', handleBlur);
     })
 
-    const mainHtmlTag = document.documentElement;
     const recallBtn = document.querySelector('.contacts-links--recall');
     const recallModal = document.querySelector('.recall__modal');
     const recallCloseModal = document.querySelector('.recall__modal-close');
