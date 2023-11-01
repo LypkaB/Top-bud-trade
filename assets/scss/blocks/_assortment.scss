@@ -1,7 +1,5 @@
 .assortment {
-    @include text-block-bg($main-grafite);
-    position: relative;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.5);
+    @include block-bg($background-color: $main-grafite, $box-shadow: 'both-sides', $position: relative);
 
     .container {
         max-width: 1420px;

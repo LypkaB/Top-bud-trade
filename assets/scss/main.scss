@@ -61,6 +61,7 @@ h1, h2, h3, h4 {
 }
 
 .contacts-links {
+    flex-shrink: 0;
     @include flex($a-items: end, $f-direction: column);
     row-gap: 10px;
 

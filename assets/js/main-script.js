@@ -1,4 +1,89 @@
 window.addEventListener('DOMContentLoaded', () => {
+    const catalogLink = document.querySelector('.header__menu--catalog');
+    catalogLink.href = 'javascript:void(0);';
+    const headerMenuListFirst = document.querySelector('.header__menu--list-dropdown-first');
+    const nextBtnFirst = document.querySelectorAll('.next-btn--first');
+    const listDropdownFirst = document.querySelector('.header__menu--list-dropdown-first');
+    const listDropdownFirstItems = listDropdownFirst.querySelectorAll(':scope > .header__menu--list-dropdown-item');
+    const nextBtnThird = document.querySelectorAll('.next-btn--third');
+    const backBtnSecond = document.querySelectorAll('.back-btn--second');
+    const backBtnThird = document.querySelectorAll('.back-btn--third');
+    const closeMenuBtn = document.querySelector('.close-menu');
+
+    catalogLink.addEventListener('click', () => {
+        headerMenuListFirst.classList.add('list_show-first');
+    })
+
+    nextBtnFirst.forEach(btn => {
+        btn.addEventListener('click', () => {
+            listDropdownFirstItems.forEach(li => {
+                btn.closest('.header__menu--list-dropdown-item').classList.add('list-items--z-ind');
+                li.classList.add('list-items--first_move');
+            })
+
+            btn.nextElementSibling.classList.add('list_show-second');
+        })
+    })
+
+    nextBtnThird.forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.closest('.list_show-second').classList.add('list_hide-second')
+
+            btn.nextElementSibling.classList.add('list_show-third');
+        })
+    })
+
+    backBtnSecond.forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.closest('.header__menu--list-dropdown-second').classList.remove('list_show-second');
+
+            listDropdownFirstItems.forEach(li => {
+                li.classList.remove('list-items--z-ind');
+                li.classList.remove('list-items--first_move');
+            })
+        })
+    })
+
+    backBtnThird.forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.closest('.header__menu--list-dropdown-third').classList.remove('list_show-third');
+
+            btn.closest('.header__menu--list-dropdown-second').classList.remove('list_hide-second');
+        })
+    })
+
+    closeMenuBtn.addEventListener('click', () => {
+        listDropdownFirstItems.forEach(li => {
+            li.classList.remove('list-items--first_move');
+        })
+
+        closeMenuBtn.closest('.header__menu--list-dropdown-first').classList.remove('list_show-first');
+
+        document.querySelectorAll('.header__menu--list-dropdown-second').forEach(list => {
+            if (list.classList.contains('list_show-second')) list.classList.add('list_hide-second--non-visible');
+
+            setTimeout(() => {
+                if (list.classList.contains('list_show-second')) {
+                    list.classList.remove('list_show-second');
+                    list.classList.remove('list_hide-second');
+                    list.classList.remove('list_hide-second--non-visible');
+                }
+            }, 1200)
+        })
+
+        document.querySelectorAll('.header__menu--list-dropdown-third').forEach(list => {
+            if (list.classList.contains('list_show-third')) list.classList.add('list_hide-third--non-visible');
+
+            setTimeout(() => {
+                if (list.classList.contains('list_show-third')) {
+                    list.classList.remove('list_show-third');
+                    list.classList.remove('list_hide-third');
+                    list.classList.remove('list_hide-third--non-visible');
+                }
+            }, 1200)
+        })
+    })
+
     /*<----- Presentation slider ----->*/
     const swiper = new Swiper('.banner__swiper', {
         slidesPerView: 1,
@@ -9,7 +94,7 @@ window.addEventListener('DOMContentLoaded', () => {
         autoplay: {
             delay: 2500,
         },
-    });
+    })
 
     /*<----- Assortment ----->*/
     const dropdownList = document.querySelectorAll('[data-height]');
@@ -20,7 +105,7 @@ window.addEventListener('DOMContentLoaded', () => {
             if (heightValue) {
                 element.style.setProperty('--custom-height', heightValue);
             }
-        });
+        })
     }
 
     /*<----- Recall modal ----->*/
@@ -42,7 +127,7 @@ window.addEventListener('DOMContentLoaded', () => {
     fieldsRecallModal.forEach(field => {
         field.addEventListener('focus', handleFocus);
         field.addEventListener('blur', handleBlur);
-    });
+    })
 
     const mainHtmlTag = document.documentElement;
     const recallBtn = document.querySelector('.contacts-links--recall');

@@ -42,24 +42,7 @@
             height: 24px;
             cursor: pointer;
 
-            &::before,
-            &::after {
-                content: "";
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 16px;
-                height: 2px;
-                background-color: white;
-            }
-
-            &::before {
-                transform: translate(-50%, -50%) rotate(45deg);
-            }
-
-            &::after {
-                transform: translate(-50%, -50%) rotate(-45deg);
-            }
+            @include cross-close();
 
             &:hover {
                 &::before,

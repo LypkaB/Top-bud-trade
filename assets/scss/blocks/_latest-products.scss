@@ -1,5 +1,5 @@
 .latest-products {
-    @include text-block-bg($bg-smooth-white);
+    @include block-bg($background-color: $bg-smooth-white);
 
     * {
         color: $main-grafite;

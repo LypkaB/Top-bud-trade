@@ -10,7 +10,7 @@
     }
 }
 
-@mixin block-bg($padding-top: 30px, $padding-bottom: 30px, $background-color: null, $box-shadow, $position: null) {
+@mixin block-bg($padding-top: 30px, $padding-bottom: 30px, $background-color: null, $box-shadow: null, $position: null) {
     padding-top: $padding-top;
     padding-bottom: $padding-bottom;
 
@@ -23,7 +23,7 @@
     } @else if ($box-shadow == 'bottom') {
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     } @else if ($box-shadow == 'both-sides') {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.5);
     }
 
     @if $position != null {
@@ -52,4 +52,44 @@
     font-size: 32px;
     margin-bottom: 30px;
     cursor: default;
+}
+
+@mixin cross-close() {
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 16px;
+        height: 2px;
+        background-color: white;
+    }
+
+    &::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+}
+
+@mixin chevron--after($width: null, $height: null, $background-size: null, $top: null, $left: null, $right: null, $transform) {
+    &::after {
+        content: "";
+        width: $width;
+        height: $height;
+        background: url("../images/icons/icon__chevron-right.svg") no-repeat center;
+
+        @if $background-size != null {
+            background-size: $background-size;
+        }
+
+        position: absolute;
+        top: $top;
+        left: $left;
+        right: $right;
+        transform: $transform;
+    }
 }
