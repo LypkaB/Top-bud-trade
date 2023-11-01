@@ -1,16 +1,17 @@
 .banner {
     margin: 0 auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    position: relative;
 
     &__swiper {
         height: 30rem;
+        position: relative;
     }
 
     .swiper {
         &-slide {
             @include flex($j-content: center, $f-direction: column);
-            padding-left: 150px;
-            padding-right: 150px;
+            padding: 20px 150px;
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
@@ -37,6 +38,7 @@
             height: 30px;
             background-color: $main-grafite;
             border-radius: 5px;
+            z-index: 8;
 
             &::after {
                 font-size: 18px;
@@ -50,9 +52,31 @@
         }
 
         &-button-prev {
-            top: 54%;
+            top: 55%;
             left: auto;
             right: 10px;
+        }
+
+        &-button-next {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .swiper-slide {
+            padding-left: 12%;
+            padding-right: 12%;
+        }
+    }
+
+    @media (max-width: 567px) {
+        &__swiper {
+            height: 40rem;
+        }
+
+        .swiper-slide h2 {
+            font-size: 18px;
         }
     }
 }
