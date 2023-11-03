@@ -1,5 +1,7 @@
 .assortment {
     @include block-bg($background-color: $main-grafite, $box-shadow: 'both-sides', $position: relative);
+    padding-left: 10px;
+    padding-right: 10px;
 
     .container {
         max-width: 1420px;

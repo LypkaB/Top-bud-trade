@@ -922,6 +922,8 @@ h4 {
   -webkit-box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.5);
   box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.5);
   position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .assortment .container {
