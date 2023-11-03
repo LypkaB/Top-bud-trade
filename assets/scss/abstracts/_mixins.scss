@@ -75,7 +75,7 @@
     }
 }
 
-@mixin chevron--after($width: null, $height: null, $background-size: null, $top: null, $left: null, $right: null, $transform) {
+@mixin chevron--after($width: null, $height: null, $background-size: null, $top: null, $left: null, $right: null, $transform, $transition: null) {
     &::after {
         content: "";
         width: $width;
@@ -91,5 +91,9 @@
         left: $left;
         right: $right;
         transform: $transform;
+
+        @if $transition != null {
+            transition: $transition;
+        }
     }
 }

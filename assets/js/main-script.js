@@ -99,16 +99,14 @@ window.addEventListener('DOMContentLoaded', () => {
     })
 
     /*<----- Assortment ----->*/
-    const dropdownList = document.querySelectorAll('[data-height]');
-    if (dropdownList.length > 0) {
-        dropdownList.forEach((element) => {
-            const heightValue = element.getAttribute('data-height');
+    const assortmentDropdown = document.querySelectorAll('.assortment__item--dropdown');
 
-            if (heightValue) {
-                element.style.setProperty('--custom-height', heightValue);
-            }
+    assortmentDropdown.forEach(item => {
+        item.addEventListener('click', () => {
+            item.querySelector('.assortment__item--dropdown-list').classList.toggle('list_open');
+            item.querySelector('.assortment__item--dropdown-btn').classList.toggle('btn_back');
         })
-    }
+    })
 
     /*<----- Recall modal ----->*/
     const fieldsRecallModal = document.querySelectorAll('.recall__form input, .recall__form textarea');

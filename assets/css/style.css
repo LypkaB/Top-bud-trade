@@ -1017,30 +1017,18 @@ h4 {
   cursor: default;
 }
 
-.assortment__item > ul > li:hover ul {
-  height: var(--custom-height);
-  opacity: 1;
-  -webkit-transform: translateY(0);
-  -ms-transform: translateY(0);
-  transform: translateY(0);
+.assortment__item > ul > li:hover .assortment__item--dropdown-list {
+  max-height: 300px;
+  -webkit-transition: max-height 1s ease-in;
+  transition: max-height 1s ease-in;
 }
 
-.assortment__item > ul > li:hover ul > li {
-  display: block;
-}
-
-.assortment__item > ul > li > ul {
+.assortment__item > ul > li .assortment__item--dropdown-list {
   padding-left: 20px;
-  height: 0;
-  opacity: 0;
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
-}
-
-.assortment__item > ul > li > ul > li {
-  display: none;
-  -webkit-animation: smoothShowDown 1.8s forwards;
-  animation: smoothShowDown 1.8s forwards;
+  max-height: 0;
+  -webkit-transition: max-height 0.7s ease-out;
+  transition: max-height 0.7s ease-out;
+  overflow: hidden;
 }
 
 .assortment__item a {
@@ -1069,6 +1057,135 @@ h4 {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+.assortment__item--dropdown {
+  position: relative;
+}
+
+.assortment__item--dropdown-btn {
+  display: none;
+  width: 30px;
+  height: 30px;
+  background-color: #73879e;
+  border: 1px solid #73879e;
+  border-radius: 5px;
+  position: absolute;
+  top: 1.5px;
+  right: 5px;
+  z-index: 9;
+}
+
+.assortment__item--dropdown-btn::after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background: url("../images/icons/icon__chevron-right.svg") no-repeat center;
+  background-size: cover;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
+}
+
+.assortment__item--dropdown .btn_back::after {
+  top: -1px;
+  left: -1px;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
+}
+
+@media (max-width: 1024px) {
+  .assortment .dropdown-chevron::after {
+    content: none;
+  }
+
+  .assortment__item--dropdown-btn {
+    display: block;
+  }
+}
+
+@media (max-width: 992px) {
+  .assortment__grid {
+    row-gap: 16px;
+  }
+
+  .assortment__grid div:nth-child(1),
+  .assortment__grid div:nth-child(2) {
+    -ms-flex-preferred-size: 50%;
+    flex-basis: 50%;
+  }
+
+  .assortment__grid-items {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-column-gap: 16px;
+    -moz-column-gap: 16px;
+    column-gap: 16px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .assortment .container {
+    padding: 15px 10px 10px;
+  }
+
+  .assortment__title {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .assortment__grid {
+    margin-bottom: 20px;
+  }
+
+  .assortment__grid div:nth-child(1),
+  .assortment__grid div:nth-child(2) {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+  }
+
+  .assortment__grid-items {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-column-gap: initial;
+    -moz-column-gap: initial;
+    column-gap: initial;
+  }
+
+  .assortment__item .dropdown-chevron {
+    padding-right: 40px !important;
+  }
+
+  .assortment__item > ul > li:hover .assortment__item--dropdown-list {
+    max-height: initial;
+    -webkit-transition: max-height 1s ease-in-out;
+    transition: max-height 1s ease-in-out;
+  }
+
+  .assortment__item > ul > li .assortment__item--dropdown-list {
+    max-height: 0 !important;
+  }
+
+  .assortment__item > ul > li .list_open {
+    max-height: 300px !important;
+  }
 }
 
 .latest-products {
