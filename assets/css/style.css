@@ -1310,6 +1310,20 @@ h4 {
   cursor: default;
 }
 
+@media (max-width: 992px) {
+  .seo-block .container {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 567px) {
+  .seo-block h2 {
+    font-size: 24px;
+  }
+}
+
 .benefits {
   padding-top: 30px;
   padding-bottom: 30px;
