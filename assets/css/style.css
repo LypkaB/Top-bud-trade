@@ -1392,6 +1392,39 @@ h4 {
   top: -6px;
 }
 
+@media (max-width: 640px) {
+  .benefits {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .benefits h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .benefits__content {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-column-gap: 10px;
+    -moz-column-gap: 10px;
+    column-gap: 10px;
+    row-gap: 15px;
+  }
+
+  .benefits__item {
+    -ms-flex-preferred-size: 48%;
+    flex-basis: 48%;
+  }
+}
+
+@media (max-width: 475px) {
+  .benefits__item {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+  }
+}
+
 .footer {
   padding-top: 30px;
   background-color: #464952;
