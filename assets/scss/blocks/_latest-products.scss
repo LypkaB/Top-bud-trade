@@ -9,18 +9,16 @@
         @include title();
     }
 
-    &__row {
+    &__container {
         display: flex;
-        flex-direction: row;
-        column-gap: 10px;
-
-        + div {
-            margin-top: 10px;
-        }
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
     }
 
     &__item {
-        width: 100%;
+        width: 274px;
+        flex-grow: 1;
         @include flex($a-items: start, $f-direction: column);
         padding: 16px;
         background: white;
@@ -64,6 +62,13 @@
                 font-size: 14px;
                 color: $main-gray;
             }
+        }
+    }
+
+    @media (max-width: 640px) {
+        h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
         }
     }
 }
