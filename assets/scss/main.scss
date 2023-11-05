@@ -67,7 +67,8 @@ h1, h2, h3, h4 {
 
     &--phone,
     &--mail,
-    &--recall {
+    &--recall,
+    &--location {
         @include flex($column-gap: 5px);
         cursor: pointer;
 
