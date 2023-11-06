@@ -177,7 +177,7 @@
             .close-menu {
                 display: none;
                 position: fixed;
-                top: 40px;
+                top: 20px;
                 right: 10%;
                 z-index: 11;
 
@@ -221,6 +221,10 @@
 
         &__search input {
             width: initial;
+        }
+
+        &__menu--list a:hover {
+            background-color: transparent;
         }
     }
 
@@ -338,6 +342,7 @@
                 }
 
                 &-second {
+                    position: absolute;
                     transform: translateX(200%);
                 }
 
