@@ -806,6 +806,7 @@ h4 {
 .banner__swiper {
   height: 30rem;
   position: relative;
+  overflow-x: hidden;
 }
 
 .banner .swiper-slide {
