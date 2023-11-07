@@ -65,19 +65,29 @@
     }
 
     @media (max-width: 768px) {
+        &__swiper {
+            height: 30rem;
+        }
+
         .swiper-slide {
-            padding-left: 12%;
-            padding-right: 12%;
+            padding-left: 10%;
+            padding-right: 10%;
         }
     }
 
     @media (max-width: 567px) {
-        &__swiper {
-            height: 40rem;
-        }
+        .swiper-slide {
+            padding-left: 45px;
+            padding-right: 45px;
 
-        .swiper-slide h2 {
-            font-size: 18px;
+            h2 {
+                font-size: 18px;
+            }
+
+            h3 {
+                font-size: 16px;
+                line-height: 25px;
+            }
         }
     }
 }

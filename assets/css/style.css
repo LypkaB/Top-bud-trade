@@ -879,19 +879,29 @@ h4 {
 }
 
 @media (max-width: 768px) {
+  .banner__swiper {
+    height: 30rem;
+  }
+
   .banner .swiper-slide {
-    padding-left: 12%;
-    padding-right: 12%;
+    padding-left: 10%;
+    padding-right: 10%;
   }
 }
 
 @media (max-width: 567px) {
-  .banner__swiper {
-    height: 40rem;
+  .banner .swiper-slide {
+    padding-left: 45px;
+    padding-right: 45px;
   }
 
   .banner .swiper-slide h2 {
     font-size: 18px;
+  }
+
+  .banner .swiper-slide h3 {
+    font-size: 16px;
+    line-height: 25px;
   }
 }
 
