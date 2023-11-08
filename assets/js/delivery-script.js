@@ -87,28 +87,6 @@ window.addEventListener('DOMContentLoaded', () => {
         mainHtmlTag.classList.remove('overflow-hide');
     })
 
-    /*<----- Presentation slider ----->*/
-    const swiper = new Swiper('.banner__swiper', {
-        slidesPerView: 1,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        autoplay: {
-            delay: 2500,
-        },
-    })
-
-    /*<----- Assortment ----->*/
-    const assortmentDropdown = document.querySelectorAll('.assortment__item--dropdown');
-
-    assortmentDropdown.forEach(item => {
-        item.addEventListener('click', () => {
-            item.querySelector('.assortment__item--dropdown-list').classList.toggle('list_open');
-            item.querySelector('.assortment__item--dropdown-btn').classList.toggle('btn_back');
-        })
-    })
-
     /*<----- Recall modal ----->*/
     const fieldsRecallModal = document.querySelectorAll('.recall__form input, .recall__form textarea');
 

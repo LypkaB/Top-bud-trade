@@ -123,13 +123,11 @@ h1, h2, h3, h4 {
     }
 }
 
+.disable-link {
+    background-color: $main-gray;
+}
+
 @import 'blocks/header';
-@import 'blocks/banner';
-@import 'blocks/main-title';
-@import 'blocks/assortment';
-@import 'blocks/latest-products';
-@import 'blocks/seo-block';
-@import 'blocks/benefits';
 @import 'blocks/footer';
 @import 'blocks/copyright';
 @import 'blocks/modal';

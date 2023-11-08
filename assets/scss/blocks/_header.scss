@@ -92,16 +92,21 @@
     }
 
     &__menu {
-        @include block-bg(8px, 8px, $main-grafite, 'top', true);
+        @include block-bg(0, 0, $main-grafite, 'top', true);
 
         &--list {
             @include flex($column-gap: 10px);
 
-            a {
-                padding: 8px 14px;
+            > li {
+                padding-top: 8px;
+                padding-bottom: 8px;
 
                 &:hover {
                     background-color: $main-gray;
+                }
+
+                a {
+                    padding: 8px 14px;
                 }
             }
 
@@ -131,6 +136,10 @@
                         border-left: 1px solid #73879e;
                         white-space: nowrap;
                         animation: smoothShowDown 1s forwards;
+
+                        &:hover {
+                            background-color: $main-gray;
+                        }
                     }
                 }
 
@@ -222,10 +231,6 @@
         &__search input {
             width: initial;
         }
-
-        &__menu--list a:hover {
-            background-color: transparent;
-        }
     }
 
     @media (max-width: 768px) {
@@ -248,9 +253,25 @@
             right: 10px;
         }
 
-        &__menu--list > li > a {
-            padding-left: 6px;
-            padding-right: 6px;
+        &__menu--list {
+            > li {
+                padding-top: 0;
+                padding-bottom: 0;
+                align-self: stretch;
+                display: flex;
+                align-items: center;
+                text-align: center;
+
+                > a {
+                    display: block;
+                    padding-top: 6px;
+                    padding-bottom: 6px;
+                }
+            }
+
+            &-dropdown-first {
+                top: 48px;
+            }
         }
     }
 
@@ -275,15 +296,6 @@
                 display: block;
             }
 
-            > li {
-                text-align: center;
-
-                > a {
-                    padding-left: 0;
-                    padding-right: 0;
-                }
-            }
-
             &-dropdown {
                 &-item {
                     @include flex($j-content: space-between);
@@ -304,7 +316,6 @@
                     bottom: 0;
                     width: 100%;
                     transition: visibility 1s, transform 1s;
-
                     @include flex($a-items: start, $j-content: center, $f-direction: column);
                     row-gap: 25px;
 
@@ -321,11 +332,16 @@
 
                     > li {
                         transition: 1s;
+
                     }
 
                     a {
                         border: none;
                         white-space: initial;
+
+                        &:hover {
+                            background-color: transparent;
+                        }
                     }
 
                     .list-items {
@@ -414,6 +430,11 @@
         &__menu--list {
             justify-content: center;
 
+            > li a {
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+
             &-dropdown {
                 &-first,
                 &-second,
@@ -443,10 +464,22 @@
         &__menu {
             &--list > li {
                 text-align: center;
+
+                a {
+                    padding-left: 4px;
+                    padding-right: 4px;
+                }
             }
 
-            &--catalog span {
-                display: none;
+            &--catalog {
+                span {
+                    display: none;
+                }
+
+                &::before {
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
             }
         }
     }
