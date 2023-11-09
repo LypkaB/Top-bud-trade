@@ -97,3 +97,17 @@
         }
     }
 }
+
+@mixin bulleted-list() {
+    &::before {
+        content: "·";
+        display: block;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+    }
+}
