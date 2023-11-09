@@ -94,6 +94,14 @@
         row-gap: 20px;
     }
 
+    &.returns-page {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 45px;
+        z-index: 2;
+    }
+
     @media (max-width: 1024px) {
         &__logo {
             text-align: center;
@@ -165,8 +173,6 @@
 
         .contacts-links--location,
         .schedule-content {
-            //text-align: right;
-
             &-text {
                 display: initial;
             }

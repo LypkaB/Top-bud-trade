@@ -13,8 +13,10 @@ const stylesPaths = {
     mainCss: 'main.css',
     deliveryScss: '../assets/scss/delivery.scss',
     deliveryCss: 'delivery.css',
+    returnsScss: '../assets/scss/returns.scss',
+    returnsCss: 'returns.css',
 }
-const funcArr = [compileStylesMain, compileStylesDelivery];
+const funcArr = [compileStylesMain, compileStylesDelivery, compileStylesReturns];
 
 function compileStylesMain() {
     return src(stylesPaths.mainScss)
@@ -31,6 +33,16 @@ function compileStylesDelivery() {
         .pipe(scss().on('error', scss.logError))
         .pipe(autoprefixer(autoprefixerOptions))
         .pipe(concatCSS(stylesPaths.deliveryCss))
+        /*.pipe(compressCSS())*/
+        .pipe(dest('../assets/css/'))
+        .pipe(browserSync.stream());
+}
+
+function compileStylesReturns() {
+    return src(stylesPaths.returnsScss)
+        .pipe(scss().on('error', scss.logError))
+        .pipe(autoprefixer(autoprefixerOptions))
+        .pipe(concatCSS(stylesPaths.returnsCss))
         /*.pipe(compressCSS())*/
         .pipe(dest('../assets/css/'))
         .pipe(browserSync.stream());

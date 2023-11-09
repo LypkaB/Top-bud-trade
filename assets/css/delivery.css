@@ -1130,6 +1130,14 @@ h4 {
   row-gap: 20px;
 }
 
+.footer.returns-page {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 45px;
+  z-index: 2;
+}
+
 @media (max-width: 1024px) {
   .footer__logo {
     text-align: center;
@@ -1229,6 +1237,13 @@ h4 {
   font-size: 14px;
   color: #464952;
   text-align: center;
+}
+
+.copyright.returns-page {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .recall__modal {

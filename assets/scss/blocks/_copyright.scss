@@ -5,4 +5,11 @@
     font-size: 14px;
     color: $main-grafite;
     text-align: center;
+
+    &.returns-page {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
 }
