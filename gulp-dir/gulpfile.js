@@ -9,14 +9,16 @@ const autoprefixerOptions = {
     cascade: false,
 }
 const stylesPaths = {
-    mainScss: '../assets/scss/main.scss',
+    mainScss: '../assets/scss/pages/main.scss',
     mainCss: 'main.css',
-    deliveryScss: '../assets/scss/delivery.scss',
+    deliveryScss: '../assets/scss/pages/delivery.scss',
     deliveryCss: 'delivery.css',
-    returnsScss: '../assets/scss/returns.scss',
+    returnsScss: '../assets/scss/pages/returns.scss',
     returnsCss: 'returns.css',
+    aboutScss: '../assets/scss/pages/about.scss',
+    aboutCss: 'about.css',
 }
-const funcArr = [compileStylesMain, compileStylesDelivery, compileStylesReturns];
+const funcArr = [compileStylesMain, compileStylesDelivery, compileStylesReturns, compileStylesAbout];
 
 function compileStylesMain() {
     return src(stylesPaths.mainScss)
@@ -43,6 +45,16 @@ function compileStylesReturns() {
         .pipe(scss().on('error', scss.logError))
         .pipe(autoprefixer(autoprefixerOptions))
         .pipe(concatCSS(stylesPaths.returnsCss))
+        /*.pipe(compressCSS())*/
+        .pipe(dest('../assets/css/'))
+        .pipe(browserSync.stream());
+}
+
+function compileStylesAbout() {
+    return src(stylesPaths.aboutScss)
+        .pipe(scss().on('error', scss.logError))
+        .pipe(autoprefixer(autoprefixerOptions))
+        .pipe(concatCSS(stylesPaths.aboutCss))
         /*.pipe(compressCSS())*/
         .pipe(dest('../assets/css/'))
         .pipe(browserSync.stream());

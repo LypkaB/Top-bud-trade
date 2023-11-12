@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
-    /*<----- Header adaptive sidemenu ----->*/
+    /*<----- Header adaptive sidebar ----->*/
     const mainHtmlTag = document.documentElement;
 
     const catalogLink = document.querySelector('.header__menu--catalog');

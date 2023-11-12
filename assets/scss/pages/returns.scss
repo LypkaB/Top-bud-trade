@@ -1,12 +1,8 @@
-@import 'abstracts/variables';
-@import 'abstracts/mixins';
-@import 'base/font';
-@import 'base/common';
-@import 'blocks/header';
-
-.disable-link {
-    background-color: $main-gray;
-}
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+@import '../base/font';
+@import '../base/common';
+@import '../blocks/header';
 
 .returns-content {
     padding-top: 30px;
@@ -65,7 +61,7 @@
     }
 }
 
-@import 'blocks/footer';
-@import 'blocks/copyright';
-@import 'blocks/modal';
-@import 'abstracts/animation';
+@import '../blocks/footer';
+@import '../blocks/copyright';
+@import '../blocks/modal';
+@import '../abstracts/animation';

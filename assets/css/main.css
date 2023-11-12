@@ -206,6 +206,11 @@ h4 {
   transform: translateY(-50%);
 }
 
+.disable-link {
+  background-color: #73879e;
+  pointer-events: none;
+}
+
 .header__content--top .container,
 .header__content .container {
   display: -webkit-box;
@@ -1602,7 +1607,7 @@ h4 {
   row-gap: 20px;
 }
 
-.footer.returns-page {
+.footer.footer_fixed {
   position: fixed;
   left: 0;
   right: 0;
@@ -1711,7 +1716,7 @@ h4 {
   text-align: center;
 }
 
-.copyright.returns-page {
+.copyright.copyright_fixed {
   position: fixed;
   left: 0;
   right: 0;

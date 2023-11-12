@@ -1,12 +1,8 @@
-@import 'abstracts/variables';
-@import 'abstracts/mixins';
-@import 'base/font';
-@import 'base/common';
-@import 'blocks/header';
-
-.disable-link {
-    background-color: $main-gray;
-}
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+@import '../base/font';
+@import '../base/common';
+@import '../blocks/header';
 
 .delivery-content {
     padding-top: 30px;
@@ -59,8 +55,8 @@
     }
 }
 
-@import 'blocks/benefits';
-@import 'blocks/footer';
-@import 'blocks/copyright';
-@import 'blocks/modal';
-@import 'abstracts/animation';
+@import '../blocks/benefits';
+@import '../blocks/footer';
+@import '../blocks/copyright';
+@import '../blocks/modal';
+@import '../abstracts/animation';

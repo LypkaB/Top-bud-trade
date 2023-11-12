@@ -120,3 +120,8 @@ h1, h2, h3, h4 {
         transform: translateY(-50%);
     }
 }
+
+.disable-link {
+    background-color: $main-gray;
+    pointer-events: none;
+}
