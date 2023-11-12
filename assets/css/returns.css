@@ -860,8 +860,7 @@ h4 {
   row-gap: 15px;
 }
 
-.returns-content h1,
-.returns-content h3 {
+.returns-content h1 {
   font-size: 16px;
 }
 
