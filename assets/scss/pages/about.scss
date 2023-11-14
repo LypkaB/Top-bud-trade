@@ -59,9 +59,38 @@
             }
         }
     }
+
+    @media (max-width: 768px) {
+        &__grid {
+            align-items: start;
+            flex-direction: column;
+            row-gap: 30px;
+        }
+
+        &__item {
+            width: 100%;
+            column-gap: 15px;
+        }
+    }
+
+    @media (max-width: 567px) {
+        &__item {
+            flex-direction: column;
+            text-align: center;
+            row-gap: 15px;
+        }
+    }
 }
 
 @import '../blocks/footer';
 @import '../blocks/copyright';
+
+@media (max-width: 768px) {
+    .footer.footer_fixed,
+    .copyright.copyright_fixed {
+        position: initial;
+    }
+}
+
 @import '../blocks/modal';
 @import '../abstracts/animation';
