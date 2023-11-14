@@ -13,13 +13,13 @@
     <!-- Fav icon -->
     <link rel="shortcut icon" href="./assets/images/favicon.png">
 
-    <title>«ТОП БУД ТРЕЙД» — доставка і оплата</title>
+    <title>«ТОП БУД ТРЕЙД» — контакти</title>
 
     <!-- Vendor -->
     <link rel="stylesheet" href="./assets/css/normalize.min.css">
 
     <!-- Style -->
-    <link rel="stylesheet" href="./assets/css/delivery.css">
+    <link rel="stylesheet" href="./assets/css/contacts.css">
 </head>
 <body>
     <header>
@@ -275,66 +275,75 @@
                             </ul>
                         </li>
                         <li><a href="about.html">Про нас</a></li>
-                        <li class="disable-link">
-                            <a href="delivery.html">Доставка і оплата</a>
-                        </li>
+                        <li><a href="delivery.html">Доставка і оплата</a></li>
                         <li><a href="returns.html">Повернення та обмін</a></li>
-                        <li><a href="contacts.html">Контакти</a></li>
+                        <li class="disable-link">
+                            <a href="contacts.html">Контакти</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
 
-    <section class="delivery-content">
+    <div class="contacts-content">
         <div class="container">
-            <div class="delivery-content__block">
-                <h2 class="delivery-content__title">Доставка</h2>
-
-                <h4>Доставка по регіонах України службами доставки.</h4>
-
-                <h4>Здійснюється за допомогою кур'єрських служб:</h4>
-
-                <ul class="delivery-content__list">
-                    <li>САТ</li>
-                    <li>Делівері</li>
-                    <li>Нова пошта (за узгодженням менеджера)</li>
-                </ul>
-
-                <h4>
-                    Також можлива послуга самовивозу товару з торгових точок компанії, адресна доставка, попутне
-                    перевезення або інші варіанти доставки, які необхідно узгодити з менеджерами.
-                </h4>
-
-                <h1 class="delivery-content__text-attention">
-                    Увага: Вартість відправки замовлення оплачується покупцем за тарифами перевізника.
-                    Відправлення здійснюється після 100% передоплати.
-                </h1>
-            </div>
-
-            <div class="delivery-content__block">
-                <h2 class="delivery-content__title">Оплата</h2>
-
-                <div class="benefits__content">
-                    <div class="benefits__item">
-                        <div class="benefits__item-icon">
-                            <img src="assets/images/icons/icon__cards.svg"
-                                 alt="Платіжними картами" title="Платіжними картами">
-                        </div>
-                        <span>Платіжними картами</span>
-                    </div>
-
-                    <div class="benefits__item">
-                        <div class="benefits__item-icon">
-                            <img src="assets/images/icons/icon__cashless.svg" class="icon-cashless"
-                                 alt="Безготівковий рахунок" title="Безготівковий рахунок">
-                        </div>
-                        <span>Безготівковий рахунок</span>
-                    </div>
+            <div class="contacts-content__info">
+                <div>
+                    <span>Email:</span>
+                    <span>topbudtrade1@gmail.com</span>
                 </div>
+
+                <div>
+                    <span>Телефон, Telegram, Viber:</span>
+                    <span>+38 068 070 77 37</span>
+                </div>
+
+                <div>
+                    <span>Юридична та поштова адреса:</span>
+                    <span>Україна, 01033, місто Київ, вул. Саксаганського, будинок 41</span>
+                </div>
+
+                <form action="" class="contacts-content__form">
+                    <span class="contacts-content__form--title">Напишіть нам:</span>
+
+                    <div class="contacts-content__form--field">
+                        <label for="contactsName">
+                            <span class="obligatory-field">Ваше ім'я</span>
+                        </label>
+                        <input id="contactsName" type="text">
+                    </div>
+
+                    <div class="contacts-content__form--field">
+                        <label for="contactsPhone">
+                            <span class="obligatory-field">Ваш номер телефону</span>
+                        </label>
+                        <input id="contactsPhone" type="text">
+                    </div>
+
+                    <div class="contacts-content__form--field">
+                        <label for="contactsMail">
+                            <span>Ваша пошта</span>
+                        </label>
+                        <input id="contactsMail" type="text">
+                    </div>
+
+                    <div class="contacts-content__form--field">
+                        <label for="contactsMessage">
+                            <span class="obligatory-field">Ваше питання або повідомлення</span>
+                        </label>
+                        <textarea id="contactsMessage" spellcheck="false"></textarea>
+                    </div>
+
+                    <input class="contacts-content__form--send" type="submit" value="Надіслати">
+                </form>
             </div>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.288961669738!2d30.511591200000005!3d50.4357181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cefc9eda9393%3A0xcf55c7abc3ac8702!2sSaksahanskoho%20St%2C%2041%2C%20Kyiv%2C%2002000!5e0!3m2!1sen!2sua!4v1699867509702!5m2!1sen!2sua"
+                    class="contacts-content__map" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
-    </section>
+    </div>
 
     <footer class="footer">
         <div class="container">
@@ -359,6 +368,7 @@
 
                 <ul class="footer__pages">
                     <li><a href="about.html">Про нас</a></li>
+                    <li><a href="delivery.html">Доставка і оплата</a></li>
                     <li><a href="returns.html">Повернення та обмін</a></li>
                 </ul>
 
@@ -436,6 +446,6 @@
         </div>
     </div>
 
-    <script src="assets/js/common-script.js"></script>
+    <script src="./assets/js/common-script.js"></script>
 </body>
 </html>

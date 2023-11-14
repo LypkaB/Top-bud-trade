@@ -110,25 +110,35 @@ window.addEventListener('DOMContentLoaded', () => {
     })
 
     /*<----- Recall modal ----->*/
-    const fieldsRecallModal = document.querySelectorAll('.recall__form input, .recall__form textarea');
+    const recallModalFields = document.querySelectorAll('.recall__form input[type="text"], .recall__form textarea');
 
-    function handleFocus(event) {
-        const label = event.target.previousElementSibling;
+    function labelFieldUp(element, valueName) {
+        element.forEach((field, index) => {
+            if (sessionStorage.getItem(`${valueName} ${index}`) !== null) {
+                field.value = sessionStorage.getItem(`${valueName} ${index}`);
+                field.previousElementSibling.classList.add('field_up');
+            }
 
-        if (label) label.classList.add('field-up');
+            field.addEventListener('focus', (e) => {
+                const label = e.target.previousElementSibling;
+                if (label) label.classList.add('field_up');
+            })
+
+            field.addEventListener('blur', (e) => {
+                const field = e.target;
+                const label = field.previousElementSibling;
+
+                if (field.value !== '') {
+                    sessionStorage.setItem(`${valueName} ${index}`, field.value);
+                } else if (field.value === '') {
+                    sessionStorage.removeItem(`${valueName} ${index}`);
+                    label.classList.remove('field_up');
+                }
+            })
+        })
     }
 
-    function handleBlur(event) {
-        const field = event.target;
-        const label = field.previousElementSibling;
-
-        if (field.value.trim() === '' && label) label.classList.remove('field-up');
-    }
-
-    fieldsRecallModal.forEach(field => {
-        field.addEventListener('focus', handleFocus);
-        field.addEventListener('blur', handleBlur);
-    })
+    labelFieldUp(recallModalFields, 'recall');
 
     const recallBtn = document.querySelector('.contacts-links--recall');
     const recallModal = document.querySelector('.recall__modal');

@@ -2,7 +2,6 @@ const {src, dest, watch, parallel, series} = require('gulp');
 const scss = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
 const concatCSS = require('gulp-concat-css');
-/*const compressCSS  = require('gulp-csso');*/
 const browserSync = require('browser-sync').create();
 const autoprefixerOptions = {
     overrideBrowserslist: ['last 3 versions', 'ie >= 10'],
@@ -17,15 +16,16 @@ const stylesPaths = {
     returnsCss: 'returns.css',
     aboutScss: '../assets/scss/pages/about.scss',
     aboutCss: 'about.css',
+    contactsScss: '../assets/scss/pages/contacts.scss',
+    contactsCss: 'contacts.css',
 }
-const funcArr = [compileStylesMain, compileStylesDelivery, compileStylesReturns, compileStylesAbout];
+const funcArr = [compileStylesMain, compileStylesDelivery, compileStylesReturns, compileStylesAbout, compileStylesContacts];
 
 function compileStylesMain() {
     return src(stylesPaths.mainScss)
         .pipe(scss().on('error', scss.logError))
         .pipe(autoprefixer(autoprefixerOptions))
         .pipe(concatCSS(stylesPaths.mainCss))
-        /*.pipe(compressCSS())*/
         .pipe(dest('../assets/css/'))
         .pipe(browserSync.stream());
 }
@@ -35,7 +35,6 @@ function compileStylesDelivery() {
         .pipe(scss().on('error', scss.logError))
         .pipe(autoprefixer(autoprefixerOptions))
         .pipe(concatCSS(stylesPaths.deliveryCss))
-        /*.pipe(compressCSS())*/
         .pipe(dest('../assets/css/'))
         .pipe(browserSync.stream());
 }
@@ -45,7 +44,6 @@ function compileStylesReturns() {
         .pipe(scss().on('error', scss.logError))
         .pipe(autoprefixer(autoprefixerOptions))
         .pipe(concatCSS(stylesPaths.returnsCss))
-        /*.pipe(compressCSS())*/
         .pipe(dest('../assets/css/'))
         .pipe(browserSync.stream());
 }
@@ -55,7 +53,15 @@ function compileStylesAbout() {
         .pipe(scss().on('error', scss.logError))
         .pipe(autoprefixer(autoprefixerOptions))
         .pipe(concatCSS(stylesPaths.aboutCss))
-        /*.pipe(compressCSS())*/
+        .pipe(dest('../assets/css/'))
+        .pipe(browserSync.stream());
+}
+
+function compileStylesContacts() {
+    return src(stylesPaths.contactsScss)
+        .pipe(scss().on('error', scss.logError))
+        .pipe(autoprefixer(autoprefixerOptions))
+        .pipe(concatCSS(stylesPaths.contactsCss))
         .pipe(dest('../assets/css/'))
         .pipe(browserSync.stream());
 }

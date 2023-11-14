@@ -111,3 +111,27 @@
         transform: translateY(-50%);
     }
 }
+
+@mixin modal-field-placeholder() {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: $main-gray;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    .obligatory-field::after {
+        content: "*";
+        position: absolute;
+        padding-left: 3px;
+        color: red;
+    }
+}
