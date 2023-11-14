@@ -63,5 +63,12 @@
 
 @import '../blocks/footer';
 @import '../blocks/copyright';
+
+@media (max-width: 768px) {
+    .footer.footer_fixed,
+    .copyright.copyright_fixed {
+        position: initial;
+    }
+}
 @import '../blocks/modal';
 @import '../abstracts/animation';
