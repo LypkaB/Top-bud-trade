@@ -91,6 +91,41 @@
             transition: all 0.3s ease;
         }
     }
+
+    @media (max-width: 992px) {
+        &__form {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+        }
+
+        &__info {
+            width: 100%;
+            margin-top: 15px;
+
+            > div + div {
+                margin-top: 15px;
+            }
+        }
+
+        &__form {
+            width: 100%;
+            margin-top: 15px;
+
+            &--field {
+                margin-top: 25px;
+            }
+        }
+
+        &__map {
+            order: -1;
+            width: 100%;
+        }
+    }
 }
 
 @import '../blocks/footer';
