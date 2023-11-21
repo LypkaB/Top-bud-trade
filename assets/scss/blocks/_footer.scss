@@ -1,9 +1,6 @@
 .footer {
-    padding-top: 30px;
-    background-color: $main-grafite;
-    padding-bottom: 5px;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), 0 -4px 8px rgba(0, 0, 0, 0.5);
+    @include block-bg(30px, 5px, $main-grafite, 'both-sides', relative);
+    z-index: 1;
 
     &__info {
         @include flex($a-items: start, $j-content: space-between);

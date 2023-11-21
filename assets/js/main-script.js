@@ -1,9 +1,7 @@
 window.addEventListener('DOMContentLoaded', () => {
     /*<----- Header adaptive sidebar ----->*/
     const mainHtmlTag = document.documentElement;
-
     const catalogLink = document.querySelector('.header__menu--catalog');
-    catalogLink.href = 'javascript:void(0);';
     const headerMenuListFirst = document.querySelector('.header__menu--list-dropdown-first');
     const nextBtnFirst = document.querySelectorAll('.next-btn--first');
     const listDropdownFirst = document.querySelector('.header__menu--list-dropdown-first');
@@ -12,6 +10,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const backBtnSecond = document.querySelectorAll('.back-btn--second');
     const backBtnThird = document.querySelectorAll('.back-btn--third');
     const closeMenuBtn = document.querySelector('.close-menu');
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 640) catalogLink.href = 'javascript:void(0);';
+        else catalogLink.href = 'catalog.html';
+    })
 
     catalogLink.addEventListener('click', () => {
         headerMenuListFirst.classList.add('list_show-first');

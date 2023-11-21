@@ -18,8 +18,10 @@ const stylesPaths = {
     aboutCss: 'about.css',
     contactsScss: '../assets/scss/pages/contacts.scss',
     contactsCss: 'contacts.css',
+    catalogScss: '../assets/scss/pages/catalog.scss',
+    catalogCss: 'catalog.css',
 }
-const funcArr = [compileStylesMain, compileStylesDelivery, compileStylesReturns, compileStylesAbout, compileStylesContacts];
+const funcArr = [compileStylesMain, compileStylesDelivery, compileStylesReturns, compileStylesAbout, compileStylesContacts, compileStylesCatalog];
 
 function compileStylesMain() {
     return src(stylesPaths.mainScss)
@@ -62,6 +64,15 @@ function compileStylesContacts() {
         .pipe(scss().on('error', scss.logError))
         .pipe(autoprefixer(autoprefixerOptions))
         .pipe(concatCSS(stylesPaths.contactsCss))
+        .pipe(dest('../assets/css/'))
+        .pipe(browserSync.stream());
+}
+
+function compileStylesCatalog() {
+    return src(stylesPaths.catalogScss)
+        .pipe(scss().on('error', scss.logError))
+        .pipe(autoprefixer(autoprefixerOptions))
+        .pipe(concatCSS(stylesPaths.catalogCss))
         .pipe(dest('../assets/css/'))
         .pipe(browserSync.stream());
 }

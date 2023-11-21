@@ -3,7 +3,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const mainHtmlTag = document.documentElement;
 
     const catalogLink = document.querySelector('.header__menu--catalog');
-    catalogLink.href = 'javascript:void(0);';
     const headerMenuListFirst = document.querySelector('.header__menu--list-dropdown-first');
     const nextBtnFirst = document.querySelectorAll('.next-btn--first');
     const listDropdownFirst = document.querySelector('.header__menu--list-dropdown-first');
@@ -12,6 +11,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const backBtnSecond = document.querySelectorAll('.back-btn--second');
     const backBtnThird = document.querySelectorAll('.back-btn--third');
     const closeMenuBtn = document.querySelector('.close-menu');
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 640) catalogLink.href = 'javascript:void(0);';
+        else catalogLink.href = 'catalog.html';
+    })
 
     catalogLink.addEventListener('click', () => {
         headerMenuListFirst.classList.add('list_show-first');
@@ -141,4 +145,45 @@ window.addEventListener('DOMContentLoaded', () => {
     recallBtn.addEventListener('click', openModal);
     recallCloseModal.addEventListener('click', closeModal);
     document.addEventListener('keydown', handleKeydown);
+
+
+
+    /*const catalogItemTitle = document.querySelectorAll('.catalog__item--title');
+    catalogItemTitle.forEach(item => {
+        console.log(item);
+
+        console.log(item.textContent.trim().charAt(0));
+    })*/
+
+    fetch('catalog.json')
+        .then(response => response.json())
+        .then(data => {
+            const productsContainer = document.querySelector('.catalog__grid');
+            let html = '';
+
+            data["Export Products Sheet"].forEach(product => {
+                html += `
+                    <div class="catalog__item-wrap">
+                        <div class="catalog__item">
+                            <span class="catalog__item--title">${product["Название_позиции_укр"]}</span>
+                            
+                            <div class="catalog__item--img">
+                                <img src="${product["Ссылка_изображения"]}" alt="${product["Название_позиции_укр"]}">
+                            </div>
+                            
+                            <span>${product["Цена"]} грн/${product["Единица_измерения"]}</span>
+    
+                            <div class="catalog__item--descr">
+                                <span>Довжина</span>
+                                <span>Ширина</span>
+                                <span>Висота</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            })
+
+            productsContainer.innerHTML = html;
+        })
+        .catch(error => console.error('Error:', error));
 })
