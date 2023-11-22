@@ -145,45 +145,4 @@ window.addEventListener('DOMContentLoaded', () => {
     recallBtn.addEventListener('click', openModal);
     recallCloseModal.addEventListener('click', closeModal);
     document.addEventListener('keydown', handleKeydown);
-
-
-
-    /*const catalogItemTitle = document.querySelectorAll('.catalog__item--title');
-    catalogItemTitle.forEach(item => {
-        console.log(item);
-
-        console.log(item.textContent.trim().charAt(0));
-    })*/
-
-    fetch('catalog.json')
-        .then(response => response.json())
-        .then(data => {
-            const productsContainer = document.querySelector('.catalog__grid');
-            let html = '';
-
-            data["Export Products Sheet"].forEach(product => {
-                html += `
-                    <div class="catalog__item-wrap">
-                        <div class="catalog__item">
-                            <span class="catalog__item--title">${product["Название_позиции_укр"]}</span>
-                            
-                            <div class="catalog__item--img">
-                                <img src="${product["Ссылка_изображения"]}" alt="${product["Название_позиции_укр"]}">
-                            </div>
-                            
-                            <span>${product["Цена"]} грн/${product["Единица_измерения"]}</span>
-    
-                            <div class="catalog__item--descr">
-                                <span>Довжина</span>
-                                <span>Ширина</span>
-                                <span>Висота</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            })
-
-            productsContainer.innerHTML = html;
-        })
-        .catch(error => console.error('Error:', error));
 })

@@ -42,6 +42,16 @@
         color: $main-grafite;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         border-radius: 4px;
+
+        select {
+            padding-left: 5px;
+            font-size: 14px;
+            color: $main-gray;
+            background: transparent;
+            border: 1px solid $main-gray;
+            border-radius: 4px;
+            outline: none;
+        }
     }
 
     &__grid {
@@ -65,6 +75,7 @@
         &-wrap {
             width: 33.33333%;
             padding: 0 5px;
+            animation: fadeIn 1s ease-out;
         }
 
         &--title {

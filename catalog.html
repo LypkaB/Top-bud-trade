@@ -295,12 +295,47 @@
                     <span>Категорії</span>
                 </aside>
 
-                <div class="catalog__content" style="width: 100%;">
+                <div class="catalog__content">
                     <div class="catalog__sort-panel">
-                        <span>Сортувати:</span>
+                        <label for="sortSelect">Сортувати:</label>
+                        <select id="sortSelect">
+                            <option value="default">за замовчуванням</option>
+                            <option value="name-asc">за ім’ям (A - Я)</option>
+                            <option value="name-desc">за ім’ям (Я - A)</option>
+                            <option value="price-asc">за ціною (зростання)</option>
+                            <option value="price-desc">за ціною (зменшення)</option>
+                        </select>
                     </div>
 
-                    <div class="catalog__grid"></div>
+                    <div class="catalog__grid">
+                        <div class="catalog__item-wrap empty-item">
+                            <div class="catalog__item"></div>
+                        </div>
+                        <div class="catalog__item-wrap empty-item">
+                            <div class="catalog__item"></div>
+                        </div>
+                        <div class="catalog__item-wrap empty-item">
+                            <div class="catalog__item"></div>
+                        </div>
+                        <div class="catalog__item-wrap empty-item">
+                            <div class="catalog__item"></div>
+                        </div>
+                        <div class="catalog__item-wrap empty-item">
+                            <div class="catalog__item"></div>
+                        </div>
+                        <div class="catalog__item-wrap empty-item">
+                            <div class="catalog__item"></div>
+                        </div>
+                        <div class="catalog__item-wrap empty-item">
+                            <div class="catalog__item"></div>
+                        </div>
+                        <div class="catalog__item-wrap empty-item">
+                            <div class="catalog__item"></div>
+                        </div>
+                        <div class="catalog__item-wrap empty-item">
+                            <div class="catalog__item"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
