@@ -149,134 +149,87 @@ window.addEventListener('DOMContentLoaded', () => {
     /*<----- Catalog - sort ----->*/
     let productsData = [];
     const loadingEmptyItem = document.querySelectorAll('.empty-item');
+    const sortSelect = document.getElementById('sortSelect');
 
     function generateHTML(products) {
-        return products.map(product => `
-            <div class="catalog__item-wrap">
-                <div class="catalog__item">
-                    <span class="catalog__item--title">${product["Название_позиции_укр"]}</span>
-                    <div class="catalog__item--img">
-                        <img src="${product["Ссылка_изображения"]}" alt="${product["Название_позиции_укр"]}">
-                    </div>
-                    <span>${product["Цена"]} грн/${product["Единица_измерения"]}</span>
-                    <div class="catalog__item--descr">
-                        <span>Довжина</span>
-                        <span>Ширина</span>
-                        <span>Висота</span>
+        return products.map(product => {
+            let characteristicsHTML = '';
+            let characteristicsCount = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const nameKey = `Назва_характеристики_${i}`;
+                const valueKey = `Значення_характеристики_${i}`;
+                if (product[nameKey] && product[valueKey]) {
+                    characteristicsHTML += `<span>${product[nameKey]}: ${product[valueKey]}</span>`;
+                    characteristicsCount++;
+                }
+            }
+
+            const bottomValue = -25.8 * characteristicsCount;
+
+            return `
+                <div class="catalog__item-wrap">
+                    <div class="catalog__item">
+                        <span class="catalog__item--title">${product["Назва_позиції"]}</span>
+                        
+                        <div class="catalog__item--img">
+                            <img src="./assets/images/products/${product["Зображення"]}" alt="${product["Назва_позиції"]}">
+                        </div>
+                        
+                        <span>${product["Ціна"]} грн/${product["Одиниця_виміру"]}</span>
+                        
+                        <div class="catalog__item--descr" style="bottom: ${bottomValue}px">
+                            ${characteristicsHTML}
+                        </div>
                     </div>
                 </div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
     }
 
-    function sortProductsDefault() {
-        return productsData.sort((a, b) => {
-            const priceA = parseFloat(a["Уникальный_идентификатор"]);
-            const priceB = parseFloat(b["Уникальный_идентификатор"]);
-            return priceA - priceB;
-        })
-    }
-
-    function sortProductsAlphabetAsc() {
-        return productsData.sort((a, b) =>
-            a["Название_позиции_укр"].localeCompare(b["Название_позиции_укр"])
-        )
-    }
-
-    function sortProductsAlphabetDesc() {
-        return productsData.sort((a, b) =>
-            b["Название_позиции_укр"].localeCompare(a["Название_позиции_укр"])
-        )
-    }
-
-    function sortProductsPriceAsc() {
-        return productsData.sort((a, b) => {
-            const priceA = parseFloat(a["Цена"]);
-            const priceB = parseFloat(b["Цена"]);
-            return priceA - priceB;
-        })
-    }
-
-    function sortProductsPriceDesc() {
-        return productsData.sort((a, b) => {
-            const priceA = parseFloat(a["Цена"]);
-            const priceB = parseFloat(b["Цена"]);
-            return priceB - priceA;
-        })
+    function sortProducts(data, sortType) {
+        switch (sortType) {
+            case 'name-asc':
+                return data.sort((a, b) => a["Назва_позиції"].localeCompare(b["Назва_позиції"]));
+            case 'name-desc':
+                return data.sort((a, b) => b["Назва_позиції"].localeCompare(a["Назва_позиції"]));
+            case 'price-asc':
+                return data.sort((a, b) => parseFloat(a["Ціна"]) - parseFloat(b["Ціна"]));
+            case 'price-desc':
+                return data.sort((a, b) => parseFloat(b["Ціна"]) - parseFloat(a["Ціна"]));
+            default:
+                return data.sort((a, b) => parseFloat(a["Номер_позиції"]) - parseFloat(b["Номер_позиції"]));
+        }
     }
 
     function displayProducts(products) {
         const productsContainer = document.querySelector('.catalog__grid');
         productsContainer.innerHTML = generateHTML(products);
+        hideLoadingPattern();
     }
 
     function hideLoadingPattern() {
         loadingEmptyItem.forEach(item => item.classList.add('hide'));
     }
 
-    fetch('catalog-file.json')
-        .then(response => {
-            return response.json();
-        })
+    function handleSortChange() {
+        const sortOption = sortSelect.value;
+        sessionStorage.setItem('selectedSortOption', sortOption);
+        displayProducts(sortProducts(productsData, sortOption));
+    }
+
+    fetch('catalog.json')
+        .then(response => response.json())
         .then(data => {
-            hideLoadingPattern();
-
-            if (sessionStorage.getItem('selectedSortOption') === 'default') {
-                productsData = data["Export Products Sheet"];
-                displayProducts(productsData);
-            } else if (sessionStorage.getItem('selectedSortOption') === 'name-asc') {
-                productsData = data["Export Products Sheet"];
-                displayProducts(productsData);
-
-                const sortedProductsAsc = sortProductsAlphabetAsc(data["Export Products Sheet"]);
-                displayProducts(sortedProductsAsc);
-            } else if (sessionStorage.getItem('selectedSortOption') === 'name-desc') {
-                productsData = data["Export Products Sheet"];
-                displayProducts(productsData);
-
-                const sortedProductsDesc = sortProductsAlphabetDesc(data["Export Products Sheet"]);
-                displayProducts(sortedProductsDesc);
-            } else if (sessionStorage.getItem('selectedSortOption') === 'price-asc') {
-                productsData = data["Export Products Sheet"];
-                displayProducts(productsData);
-
-                const sortedProductsPriceAsc = sortProductsPriceAsc(data["Export Products Sheet"]);
-                displayProducts(sortedProductsPriceAsc);
-            } else if (sessionStorage.getItem('selectedSortOption') === 'price-desc') {
-                productsData = data["Export Products Sheet"];
-                displayProducts(productsData);
-
-                const sortedProductsPriceDesc = sortProductsPriceDesc(data["Export Products Sheet"]);
-                displayProducts(sortedProductsPriceDesc);
-            }
-
-            const sortSelect = document.getElementById('sortSelect');
-            sortSelect.addEventListener('change', () => {
-                sessionStorage.setItem('selectedSortOption', sortSelect.value);
-
-                if (sessionStorage.getItem('selectedSortOption') === 'default') {
-                    const sortedProductsDefault = sortProductsDefault(data["Export Products Sheet"]);
-                    displayProducts(sortedProductsDefault);
-                } else if (sessionStorage.getItem('selectedSortOption') === 'name-asc') {
-                    const sortedProductsAsc = sortProductsAlphabetAsc(data["Export Products Sheet"]);
-                    displayProducts(sortedProductsAsc);
-                } else if (sessionStorage.getItem('selectedSortOption') === 'name-desc') {
-                    const sortedProductsDesc = sortProductsAlphabetDesc(data["Export Products Sheet"]);
-                    displayProducts(sortedProductsDesc);
-                } else if (sessionStorage.getItem('selectedSortOption') === 'price-asc') {
-                    const sortedProductsPriceAsc = sortProductsPriceAsc(data["Export Products Sheet"]);
-                    displayProducts(sortedProductsPriceAsc);
-                } else if (sessionStorage.getItem('selectedSortOption') === 'price-desc') {
-                    const sortedProductsPriceDesc = sortProductsPriceDesc(data["Export Products Sheet"]);
-                    displayProducts(sortedProductsPriceDesc);
-                }
-            })
-
-            const savedOption = sessionStorage.getItem('selectedSortOption');
-            if (savedOption) sortSelect.value = savedOption;
+            productsData = data;
+            const selectedSortOption = sessionStorage.getItem('selectedSortOption') || 'default';
+            sortSelect.value = selectedSortOption;
+            displayProducts(sortProducts(data, selectedSortOption));
         })
         .catch(error => {
             console.error('Error:', error);
             hideLoadingPattern();
         });
+
+    sortSelect.addEventListener('change', handleSortChange);
 })

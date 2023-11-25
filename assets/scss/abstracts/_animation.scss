@@ -22,8 +22,3 @@
     90% { transform: translateX(-1px); }
     100% { transform: translateX(0); }
 }
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}

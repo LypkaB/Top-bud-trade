@@ -934,8 +934,6 @@ h4 {
 .catalog__item-wrap {
   width: 33.33333%;
   padding: 0 5px;
-  -webkit-animation: fadeIn 1s ease-out;
-  animation: fadeIn 1s ease-out;
 }
 
 .catalog__item--title {
@@ -964,7 +962,6 @@ h4 {
   box-shadow: 0 10px 8px rgba(0, 0, 0, 0.5);
   position: absolute;
   left: 0;
-  bottom: -78px;
   -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
 }
@@ -1527,25 +1524,5 @@ h4 {
   100% {
     -webkit-transform: translateX(0);
     transform: translateX(0);
-  }
-}
-
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
   }
 }
