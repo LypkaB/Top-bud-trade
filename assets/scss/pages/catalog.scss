@@ -12,6 +12,7 @@
     h1 {
         font-size: 22px;
         margin-bottom: 15px;
+        cursor: default;
     }
 
     &__content {
@@ -28,11 +29,93 @@
         position: sticky;
         top: 20px;
         min-width: 276px;
-        height: 200px;
-        padding: 16px;
+        height: fit-content;
         border-radius: 4px;
         background-color: white;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+
+        /*TODO - ?*/
+        max-height: 700px;
+        overflow-y: scroll;
+
+        &--title {
+            display: block;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: default;
+            position: relative;
+
+            &::after {
+                content: '';
+                width: 100%;
+                height: 2px;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                background-color: $main-grafite;
+            }
+        }
+
+        &--categories {
+            @include flex($a-items: start, $f-direction: column);
+
+            button {
+                width: 100%;
+                color: $main-grafite;
+                text-align: left;
+                padding: 10px 20px;
+                position: relative;
+
+                @include bulleted-list();
+
+                &:hover {
+                    background-color: $main-gray;
+                    color: white;
+                }
+            }
+
+            .categories__list {
+                &-first,
+                &-second {
+                    display: none;
+                    width: 100%;
+
+                    span {
+                        display: block;
+                        padding-top: 10px;
+                        padding-right: 20px;
+                        padding-bottom: 10px;
+
+                        position: relative;
+
+                        @include bulleted-list();
+
+                        &:hover {
+                            background-color: $main-gray;
+                            color: white;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                &-first span {
+                    padding-left: 30px;
+
+                    &::before {
+                        left: 10px;
+                    }
+                }
+
+                &-second span {
+                    padding-left: 50px;
+
+                    &::before {
+                        left: 25px;
+                    }
+                }
+            }
+        }
     }
 
     &__sort-panel {

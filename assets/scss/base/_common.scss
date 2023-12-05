@@ -125,3 +125,26 @@ h1, h2, h3, h4 {
     background-color: $main-gray;
     pointer-events: none;
 }
+
+.active-category {
+    background-color: $main-gray;
+    color: white;
+
+    &__sidebar {
+        cursor: default;
+    }
+}
+
+.category_active {
+    background-color: $main-gray;
+    color: white !important;
+
+
+    span {
+        cursor: default !important;
+    }
+}
+
+.list_show {
+    display: block !important;
+}

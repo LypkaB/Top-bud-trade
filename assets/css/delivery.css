@@ -211,6 +211,28 @@ h4 {
   pointer-events: none;
 }
 
+.active-category {
+  background-color: #73879e;
+  color: white;
+}
+
+.active-category__sidebar {
+  cursor: default;
+}
+
+.category_active {
+  background-color: #73879e;
+  color: white !important;
+}
+
+.category_active span {
+  cursor: default !important;
+}
+
+.list_show {
+  display: block !important;
+}
+
 .header__content--top .container,
 .header__content .container {
   display: -webkit-box;
