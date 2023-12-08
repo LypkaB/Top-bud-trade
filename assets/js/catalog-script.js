@@ -105,7 +105,12 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     function showProducts(products) {
-        document.querySelector('.catalog__grid').innerHTML = createProductItems(products);
+        if (createProductItems(products) !== '') {
+            document.querySelector('.catalog__grid').innerHTML = createProductItems(products);
+        } else {
+            document.querySelector('.catalog__grid').innerHTML =
+                `<div class="catalog__item-no-data">Даних немає. Вибачте за незручності.</div>`;
+        }
     }
 
     function sortProducts(products, sortType) {

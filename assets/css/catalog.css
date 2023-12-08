@@ -1044,6 +1044,7 @@ h4 {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   row-gap: 10px;
+  position: relative;
 }
 
 .catalog__item {
@@ -1123,6 +1124,18 @@ h4 {
 
 .catalog__item:hover .catalog__item--descr {
   opacity: 1;
+}
+
+.catalog__item-no-data {
+  font-size: 18px;
+  color: red;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  cursor: default;
 }
 
 .footer {

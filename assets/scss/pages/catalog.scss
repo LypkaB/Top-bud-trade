@@ -141,6 +141,7 @@
         display: flex;
         flex-wrap: wrap;
         row-gap: 10px;
+        position: relative;
     }
 
     &__item {
@@ -204,6 +205,16 @@
             .catalog__item--descr {
                 opacity: 1;
             }
+        }
+
+        &-no-data {
+            font-size: 18px;
+            color: red;
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: default;
         }
     }
 }
