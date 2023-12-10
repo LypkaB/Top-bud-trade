@@ -91,6 +91,26 @@ window.addEventListener('DOMContentLoaded', () => {
         mainHtmlTag.classList.remove('overflow-hide');
     })
 
+    /*<----- Header links ----->*/
+    const dataCategory = document.querySelectorAll('[data-category]');
+
+    function removeUnnecessaryKeys(exceptKey) {
+        for (let i = 0; i < sessionStorage.length; i++) {
+            const key = sessionStorage.key(i);
+            if (key !== exceptKey && key !== 'sort-option') sessionStorage.removeItem(key);
+        }
+    }
+
+    dataCategory.forEach(elem => {
+        const categoryValue = elem.getAttribute('data-category');
+        const nameValue = elem.textContent.replace(/\s+/g, ' ').trim();
+
+        elem.addEventListener('click', () => {
+            removeUnnecessaryKeys(categoryValue);
+            sessionStorage.setItem(categoryValue, nameValue);
+        });
+    });
+
     /*<----- Manipulation with input labels ----->*/
     const recallModalFields = document.querySelectorAll('.recall__form input[type="text"], .recall__form textarea');
     const contactsFormFields = document.querySelectorAll('.contacts-content__form input[type="text"], .contacts-content__form textarea');
