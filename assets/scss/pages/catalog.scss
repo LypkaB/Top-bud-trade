@@ -33,9 +33,7 @@
         border-radius: 4px;
         background-color: white;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-
-        /*TODO - ?*/
-        max-height: 700px;
+        max-height: 800px;
         overflow-y: scroll;
 
         &--title {
@@ -55,10 +53,16 @@
                 bottom: 0;
                 background-color: $main-grafite;
             }
+
+            &.title-filter::after {
+                bottom: initial;
+                top: 2px;
+            }
         }
 
         &--categories {
             @include flex($a-items: start, $f-direction: column);
+            margin-bottom: 10px;
 
             button {
                 width: 100%;
@@ -115,6 +119,51 @@
                     }
                 }
             }
+        }
+
+        &--filter {
+            padding-left: 10px;
+            padding-right: 20px;
+
+            > div {
+                padding: 10px;
+                border: 1px solid $main-gray;
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+        }
+
+        .filter__characteristics {
+            &-title {
+                cursor: default;
+            }
+
+            &-list {
+                margin-top: 5px;
+
+                li {
+                    overflow: hidden;
+                    transition: max-height 0.8s ease, opacity 2s ease;
+                    max-height: 0;
+                    opacity: 0;
+
+                    &.expanded {
+                        max-height: 50px;
+                        opacity: 1;
+                    }
+                }
+
+                label,
+                input {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .show-more {
+            display: inline;
+            margin-top: 10px;
+            cursor: pointer;
         }
     }
 

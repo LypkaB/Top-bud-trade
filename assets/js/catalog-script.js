@@ -68,6 +68,64 @@ window.addEventListener('DOMContentLoaded', () => {
         sessionStorage.setItem(menuCatalogCategoryValue, menuCatalogNameValue);
     }
 
+    function getFilterCategories(products) {
+        return products.reduce((map, item) => {
+            const key = item['Назва_характеристики_1'];
+            const value = item['Значення_характеристики_1'];
+
+            if (key) {
+                const values = map.get(key) || new Set();
+                values.add(value);
+                map.set(key, values);
+            }
+
+            return map;
+        }, new Map());
+    }
+
+    function showFilters(products) {
+        const container = document.querySelector('.catalog__sidebar--filter');
+        container.innerHTML = '';
+
+        getFilterCategories(products).forEach((values, key) => {
+            const sortedValues = Array.from(values).sort((a, b) => a - b);
+            const listItemsHtml = sortedValues.map((value, index) => {
+                const hiddenClass = index < 5 ? 'expanded' : '';
+                return `<li class="${hiddenClass}">
+                        <label>
+                            <input type="checkbox">
+                            ${value}
+                        </label>
+                    </li>`;
+            }).join('');
+
+            const showMoreHtml = sortedValues.length > 5 ? `<li class="show-more expanded">Показати більше</li>` : '';
+            const htmlContent =
+                `<div>
+                    <span class="filter__characteristics-title">${key}:</span>
+                    <ul class="filter__characteristics-list">${listItemsHtml}${showMoreHtml}</ul>
+                </div>`;
+
+            container.insertAdjacentHTML('beforeend', htmlContent);
+        });
+
+        container.addEventListener('click', function(event) {
+            if (!event.target.classList.contains('show-more')) return;
+
+            const button = event.target;
+            const listItems = button.parentNode.querySelectorAll('li');
+            const isExpanded = button.getAttribute('data-expanded') === 'true';
+
+            listItems.forEach((item, index) => {
+                if (index >= 5) item.classList.toggle('expanded');
+            });
+
+            button.textContent = isExpanded ? 'Показати більше' : 'Приховати';
+            button.setAttribute('data-expanded', !isExpanded);
+            button.classList.toggle('expanded');
+        });
+    }
+
     function createProductItems(products) {
         return products.map(product => {
             let characteristicsHTML = '';
@@ -179,6 +237,8 @@ window.addEventListener('DOMContentLoaded', () => {
         .then(productsData => {
             hideLoadingPattern();
 
+            showFilters(productsData);
+
             function showFilteredProducts(productsArr) {
                 const sortOption = sessionStorage.getItem('sort-option');
                 switch (sortOption) {
@@ -211,7 +271,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 sortSelect.value = savedOption ? savedOption : sortSelect.value;
             }
 
-            function foo() {
+            function showProductFromStorage() {
                 let foundItem = null;
                 for (let i = 0; i < sessionStorage.length; i++) {
                     let key = sessionStorage.key(i);
@@ -235,7 +295,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 showFilteredProducts(productsData);
                 addListenerOfSortSelect(productsData);
             } else {
-                foo();
+                showProductFromStorage();
             }
 
             const dataCategory = document.querySelectorAll('[data-category]');
@@ -253,12 +313,10 @@ window.addEventListener('DOMContentLoaded', () => {
                     } else {
                         removeUnnecessaryKeys(categoryValue);
                         sessionStorage.setItem(categoryValue, nameValue);
-                        foo();
+                        showProductFromStorage();
                     }
                 });
             });
-
-
         })
         .catch(error => {
             console.error('Error:', error);
