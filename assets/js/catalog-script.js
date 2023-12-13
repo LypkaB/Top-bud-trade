@@ -1,3 +1,19 @@
+const FILTER_KEY = 'filtering-options';
+let allProducts = [];
+
+const getDataFromStorage = () => {
+    try {
+        const data = sessionStorage.getItem(FILTER_KEY);
+        return data ? JSON.parse(data) : [];
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+
+const getValueFromStorage = (items = [], key) => {
+    return [...new Set(items.map((item) => item[key]))];
+};
+
 window.addEventListener('DOMContentLoaded', () => {
     /*<----- Manipulation with input labels ----->*/
     const recallModalFields = document.querySelectorAll('.recall__form input[type="text"], .recall__form textarea');
@@ -13,7 +29,7 @@ window.addEventListener('DOMContentLoaded', () => {
             field.addEventListener('focus', (e) => {
                 const label = e.target.previousElementSibling;
                 if (label) label.classList.add('field_up');
-            })
+            });
 
             field.addEventListener('blur', (e) => {
                 const field = e.target;
@@ -25,8 +41,8 @@ window.addEventListener('DOMContentLoaded', () => {
                     sessionStorage.removeItem(`${valueName} ${index}`);
                     label.classList.remove('field_up');
                 }
-            })
-        })
+            });
+        });
     }
 
     if (contactsFormFields) labelFieldUp(contactsFormFields, 'contacts');
@@ -57,7 +73,7 @@ window.addEventListener('DOMContentLoaded', () => {
     /*<----- Catalog - sort ----->*/
     function hideLoadingPattern() {
         const loadingEmptyItem = document.querySelectorAll('.empty-item');
-        loadingEmptyItem.forEach(item => item.classList.add('hide'));
+        loadingEmptyItem.forEach((item) => item.classList.add('hide'));
     }
 
     function addStorageKey() {
@@ -68,106 +84,67 @@ window.addEventListener('DOMContentLoaded', () => {
         sessionStorage.setItem(menuCatalogCategoryValue, menuCatalogNameValue);
     }
 
-    function getFilterCategories(products) {
-        return products.reduce((map, item) => {
-            const key = item['Назва_характеристики_1'];
-            const value = item['Значення_характеристики_1'];
-
-            if (key) {
-                const values = map.get(key) || new Set();
-                values.add(value);
-                map.set(key, values);
-            }
-
-            return map;
-        }, new Map());
-    }
-
-    function showFilters(products) {
-        const container = document.querySelector('.catalog__sidebar--filter');
-        container.innerHTML = '';
-
-        getFilterCategories(products).forEach((values, key) => {
-            const sortedValues = Array.from(values).sort((a, b) => a - b);
-            const listItemsHtml = sortedValues.map((value, index) => {
-                const hiddenClass = index < 5 ? 'expanded' : '';
-                return `<li class="${hiddenClass}">
-                        <label>
-                            <input type="checkbox">
-                            ${value}
-                        </label>
-                    </li>`;
-            }).join('');
-
-            const showMoreHtml = sortedValues.length > 5 ? `<li class="show-more expanded">Показати більше</li>` : '';
-            const htmlContent =
-                `<div>
-                    <span class="filter__characteristics-title">${key}:</span>
-                    <ul class="filter__characteristics-list">${listItemsHtml}${showMoreHtml}</ul>
-                </div>`;
-
-            container.insertAdjacentHTML('beforeend', htmlContent);
-        });
-
-        container.addEventListener('click', function(event) {
-            if (!event.target.classList.contains('show-more')) return;
-
-            const button = event.target;
-            const listItems = button.parentNode.querySelectorAll('li');
-            const isExpanded = button.getAttribute('data-expanded') === 'true';
-
-            listItems.forEach((item, index) => {
-                if (index >= 5) item.classList.toggle('expanded');
-            });
-
-            button.textContent = isExpanded ? 'Показати більше' : 'Приховати';
-            button.setAttribute('data-expanded', !isExpanded);
-            button.classList.toggle('expanded');
-        });
-    }
-
     function createProductItems(products) {
-        return products.map(product => {
-            let characteristicsHTML = '';
-            let characteristicsCount = 0;
+        return products
+            .map((product) => {
+                let characteristicsHTML = '';
+                let characteristicsCount = 0;
 
-            for (let i = 1; i <= 10; i++) {
-                const nameKey = `Назва_характеристики_${i}`;
-                const valueKey = `Значення_характеристики_${i}`;
-                if (product[nameKey] && product[valueKey]) {
-                    characteristicsHTML += `<span>${product[nameKey]}: ${product[valueKey]}</span>`;
-                    characteristicsCount++;
+                for (let i = 1; i <= 10; i++) {
+                    const nameKey = `Назва_характеристики_${i}`;
+                    const valueKey = `Значення_характеристики_${i}`;
+                    if (product[nameKey] && product[valueKey]) {
+                        characteristicsHTML += `<span>${product[nameKey]}: ${product[valueKey]}</span>`;
+                        characteristicsCount++;
+                    }
                 }
-            }
 
-            const bottomValue = -25.8 * characteristicsCount;
+                const bottomValue = -25.8 * characteristicsCount;
 
-            return `
-                <div class="catalog__item-wrap">
-                    <div class="catalog__item">
-                        <span class="catalog__item--title">${product["Назва_позиції"]}</span>
-                        
-                        <div class="catalog__item--img">
-                            <img src="./assets/images/products/${product["Зображення"]}" alt="${product["Назва_позиції"]}">
+                return `
+                        <div class="catalog__item-wrap">
+                            <div class="catalog__item">
+                                <span class="catalog__item--title">${product['Назва_позиції']}</span>
+                                
+                                <div class="catalog__item--img">
+                                    <img src="./assets/images/products/${product['Зображення']}" alt="${product['Назва_позиції']}">
+                                </div>
+                                
+                                <span>${product['Ціна']} грн/${product['Одиниця_виміру']}</span>
+                                
+                                <div class="catalog__item--descr" style="bottom: ${bottomValue}px">
+                                    ${characteristicsHTML}
+                                </div>
+                            </div>
                         </div>
-                        
-                        <span>${product["Ціна"]} грн/${product["Одиниця_виміру"]}</span>
-                        
-                        <div class="catalog__item--descr" style="bottom: ${bottomValue}px">
-                            ${characteristicsHTML}
-                        </div>
-                    </div>
-                </div>
-            `;
-        }).join('');
+                    `;
+            })
+            .join('');
     }
+
+    const key1 = 'Назва_характеристики_1';
+    const key2 = 'Назва_характеристики_2';
+    const value1 = 'Значення_характеристики_1';
+    const value2 = 'Значення_характеристики_2';
 
     function showProducts(products) {
-        if (createProductItems(products) !== '') {
-            document.querySelector('.catalog__grid').innerHTML = createProductItems(products);
+        const dataStorage = getDataFromStorage();
+        const names = getValueFromStorage(dataStorage, 'name');
+        const selectedValue = getValueFromStorage(dataStorage, 'value');
+
+        const arr = products.filter((item) => {
+            return (
+                (names.includes(item[key1]) && selectedValue.includes(item[value1].toString())) || (names.includes(item[key2]) && selectedValue.includes(item[value2].toString()))
+            );
+        });
+        const markup = arr.length > 0 ? createProductItems(arr) : createProductItems(products);
+
+        if (markup !== '') {
+            document.querySelector('.catalog__grid').innerHTML = markup;
         } else {
-            document.querySelector('.catalog__grid').innerHTML =
-                `<div class="catalog__item-no-data">Даних немає. Вибачте за незручності.</div>`;
+            document.querySelector(
+                '.catalog__grid'
+            ).innerHTML = `<div class="catalog__item-no-data">Даних немає. Вибачте за незручності.</div>`;
         }
     }
 
@@ -176,15 +153,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
         switch (sortType) {
             case 'name-asc':
-                return sortedProducts.sort((a, b) => a["Назва_позиції"].localeCompare(b["Назва_позиції"]));
+                return sortedProducts.sort((a, b) => a['Назва_позиції'].localeCompare(b['Назва_позиції']));
             case 'name-desc':
-                return sortedProducts.sort((a, b) => b["Назва_позиції"].localeCompare(a["Назва_позиції"]));
+                return sortedProducts.sort((a, b) => b['Назва_позиції'].localeCompare(a['Назва_позиції']));
             case 'price-asc':
-                return sortedProducts.sort((a, b) => parseFloat(a["Ціна"]) - parseFloat(b["Ціна"]));
+                return sortedProducts.sort((a, b) => parseFloat(a['Ціна']) - parseFloat(b['Ціна']));
             case 'price-desc':
-                return sortedProducts.sort((a, b) => parseFloat(b["Ціна"]) - parseFloat(a["Ціна"]));
+                return sortedProducts.sort((a, b) => parseFloat(b['Ціна']) - parseFloat(a['Ціна']));
             default:
-                return sortedProducts.sort((a, b) => parseFloat(a["Номер_позиції"]) - parseFloat(b["Номер_позиції"]));
+                return sortedProducts.sort((a, b) => parseFloat(a['Номер_позиції']) - parseFloat(b['Номер_позиції']));
         }
     }
 
@@ -197,15 +174,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function addActiveClass() {
         const elementsWithDataCategory = document.querySelectorAll('[data-category]');
-
         const categoriesContainer = document.querySelector('.catalog__sidebar--categories');
         const activeCategory = categoriesContainer.querySelector('.category_active');
         const showList = categoriesContainer.querySelectorAll('.list_show');
 
         if (activeCategory) activeCategory.classList.remove('category_active');
-        if (showList) showList.forEach(list => list.classList.remove('list_show'));
+        if (showList) showList.forEach((list) => list.classList.remove('list_show'));
 
-        elementsWithDataCategory.forEach(elem => {
+        elementsWithDataCategory.forEach((elem) => {
             const categoryName = elem.textContent.replace(/\s+/g, ' ').trim();
             const firstStorageKey = sessionStorage.getItem(sessionStorage.key(0));
             const secondStorageKey = sessionStorage.getItem(sessionStorage.key(1));
@@ -230,34 +206,118 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function getFilterCategories(products) {
+        return products.reduce((map, item) => {
+            const key1 = item['Назва_характеристики_1'];
+            const value1 = item['Значення_характеристики_1'];
+
+            if (key1) {
+                const values1 = map.get(key1) || new Set();
+                values1.add(value1);
+                map.set(key1, values1);
+            }
+
+            const key2 = item['Назва_характеристики_2'];
+            const value2 = item['Значення_характеристики_2'];
+
+            if (key2) {
+                const values2 = map.get(key2) || new Set();
+                values2.add(value2);
+                map.set(key2, values2);
+            }
+
+            return map;
+        }, new Map());
+    }
+
+    const container = document.querySelector('.catalog__sidebar--filter');
+
+    container.addEventListener('change', (e) => {
+        const data = [...e.currentTarget.querySelectorAll('input[type="checkbox"]:checked'),].map((item) => {
+            return {
+                name: item.name,
+                value: item.value,
+            };
+        });
+
+        sessionStorage.setItem(FILTER_KEY, JSON.stringify(data));
+        showProducts(allProducts);
+    });
+
+    function showFilters(products) {
+        container.innerHTML = '';
+        const dataStorage = getDataFromStorage();
+        const names = getValueFromStorage(dataStorage, 'name');
+        const selectedValue = getValueFromStorage(dataStorage, 'value');
+
+        getFilterCategories(products).forEach((values, key) => {
+            const sortedValues = Array.from(values).sort((a, b) => a - b);
+            const listItemsHtml = sortedValues.map((value, index) => {
+                const hiddenClass = index < 5 ? 'expanded' : '';
+                const toggle = names.includes(key) && selectedValue.includes(value.toString());
+
+                return `<li class="${hiddenClass}">
+                            <label>
+                                <input type="checkbox" name="${key}" value="${value}" ${toggle ? 'checked' : ''}>
+                                ${value}
+                            </label>
+                        </li>`;
+            }).join('');
+
+            const showMoreHtml = sortedValues.length > 5 ? `<li class="show-more expanded">Показати більше</li>` : '';
+            const htmlContent =
+                `<div>
+                    <span class="filter__characteristics-title">${key}:</span>
+                    <ul class="filter__characteristics-list">${listItemsHtml}${showMoreHtml}</ul>
+                </div>`;
+
+            container.insertAdjacentHTML('beforeend', htmlContent);
+        });
+
+        container.addEventListener('click', function (event) {
+            if (!event.target.classList.contains('show-more')) return;
+
+            const button = event.target;
+            const listItems = button.parentNode.querySelectorAll('li');
+            const isExpanded = button.getAttribute('data-expanded') === 'true';
+
+            listItems.forEach((item, index) => {
+                if (index >= 5) item.classList.toggle('expanded');
+            });
+
+            button.textContent = isExpanded ? 'Показати більше' : 'Приховати';
+            button.setAttribute('data-expanded', !isExpanded);
+            button.classList.toggle('expanded');
+        });
+    }
+
     fetch('catalog.json')
-        .then(response => {
+        .then((response) => {
             return response.json();
         })
-        .then(productsData => {
+        .then((productsData) => {
             hideLoadingPattern();
-
-            showFilters(productsData);
 
             function showFilteredProducts(productsArr) {
                 const sortOption = sessionStorage.getItem('sort-option');
                 switch (sortOption) {
                     case 'name-asc':
-                        showProducts(sortProducts(productsArr, 'name-asc'));
+                        allProducts = sortProducts(productsArr, 'name-asc');
                         break;
                     case 'name-desc':
-                        showProducts(sortProducts(productsArr, 'name-desc'));
+                        allProducts = sortProducts(productsArr, 'name-desc');
                         break;
                     case 'price-asc':
-                        showProducts(sortProducts(productsArr, 'price-asc'));
+                        allProducts = sortProducts(productsArr, 'price-asc');
                         break;
                     case 'price-desc':
-                        showProducts(sortProducts(productsArr, 'price-desc'));
+                        allProducts = sortProducts(productsArr, 'price-desc');
                         break;
                     default:
-                        showProducts(sortProducts(productsArr, 'default'));
+                        allProducts = sortProducts(productsArr, 'default');
                         break;
                 }
+                showProducts(allProducts);
             }
 
             function addListenerOfSortSelect(data) {
@@ -275,8 +335,8 @@ window.addEventListener('DOMContentLoaded', () => {
                 let foundItem = null;
                 for (let i = 0; i < sessionStorage.length; i++) {
                     let key = sessionStorage.key(i);
-                    if (key !== 'sort-option') {
-                        foundItem = { key: key, value: sessionStorage.getItem(key) };
+                    if (key.includes('Назва_групи')) {
+                        foundItem = {key: key, value: sessionStorage.getItem(key)};
                         break;
                     }
                 }
@@ -284,9 +344,93 @@ window.addEventListener('DOMContentLoaded', () => {
                 if (foundItem !== null) {
                     addActiveClass();
 
-                    const filteredProducts = productsData.filter(item => item[foundItem.key] === foundItem.value);
+                    const filteredProducts = productsData.filter(
+                        (item) => item[foundItem.key] === foundItem.value
+                    );
                     showFilteredProducts(filteredProducts);
                     addListenerOfSortSelect(filteredProducts);
+
+                    function getCharacteristicValues(filteredProducts) {
+                        let characteristicsDetails = [];
+
+                        filteredProducts.forEach((item) => {
+                            let characteristicDetail = {
+                                name1: null,
+                                value1: null,
+                                name2: null,
+                                value2: null,
+                            };
+
+                            if ('Назва_характеристики_1' in item) characteristicDetail.name1 = item['Назва_характеристики_1'];
+                            if ('Значення_характеристики_1' in item) characteristicDetail.value1 = item['Значення_характеристики_1'];
+                            if ('Назва_характеристики_2' in item) characteristicDetail.name2 = item['Назва_характеристики_2'];
+                            if ('Значення_характеристики_2' in item) characteristicDetail.value2 = item['Значення_характеристики_2'];
+
+                            if (characteristicDetail.name1 || characteristicDetail.value1 || characteristicDetail.name2 || characteristicDetail.value2) {
+                                characteristicsDetails.push(characteristicDetail);
+                            }
+                        });
+
+                        return characteristicsDetails;
+                    }
+
+                    const filteredProducts2 = productsData.filter(
+                        (item) => item[foundItem.key] === foundItem.value
+                    );
+                    const characteristicsDetails =
+                        getCharacteristicValues(filteredProducts2);
+
+                    function showCharacteristicsFilters(characteristicsDetails) {
+                        const container = document.querySelector('.catalog__sidebar--filter');
+                        container.innerHTML = '';
+
+                        const groupedDetails = characteristicsDetails.reduce(
+                            (acc, {name1, value1, name2, value2}) => {
+                                if (name1) {
+                                    acc[name1] = acc[name1] || new Set();
+                                    if (value1) acc[name1].add(value1);
+                                }
+                                if (name2) {
+                                    acc[name2] = acc[name2] || new Set();
+                                    if (value2) acc[name2].add(value2);
+                                }
+                                return acc;
+                            },
+                            {}
+                        );
+
+                        const sortedGroups = Object.entries(groupedDetails).sort((a, b) =>
+                            a[0].localeCompare(b[0])
+                        );
+                        const dataStorage = getDataFromStorage();
+                        const names = getValueFromStorage(dataStorage, 'name');
+                        const selectedValue = getValueFromStorage(dataStorage, 'value');
+
+                        sortedGroups.forEach(([name, values]) => {
+                            const sortedValues = Array.from(values).sort((a, b) => parseFloat(a) - parseFloat(b));
+                            const listItemsHtml = sortedValues.map((value, index) => {
+                            const hiddenClass = index < 5 ? 'expanded' : '';
+                            const toggle = names.includes(name) && selectedValue.includes(value.toString());
+
+                                return `<li class="${hiddenClass}">
+                                            <label>
+                                                <input type="checkbox" name="${name}" value="${value}" ${toggle ? 'checked' : ''}>
+                                                    ${value}
+                                            </label>
+                                        </li>`;
+                            }).join('');
+
+                            const showMoreHtml = sortedValues.length > 5 ? `<li class="show-more expanded">Показати більше</li>` : '';
+                            const htmlContent =
+                                `<div>
+                                    <span class="filter__characteristics-title">${name}:</span>
+                                    <ul class="filter__characteristics-list">${listItemsHtml}${showMoreHtml}</ul>
+                                </div>`;
+
+                            container.insertAdjacentHTML('beforeend', htmlContent);
+                        });
+                    }
+                    showCharacteristicsFilters(characteristicsDetails);
                 }
             }
 
@@ -294,12 +438,14 @@ window.addEventListener('DOMContentLoaded', () => {
                 addStorageKey();
                 showFilteredProducts(productsData);
                 addListenerOfSortSelect(productsData);
+
+                showFilters(productsData);
             } else {
                 showProductFromStorage();
             }
 
             const dataCategory = document.querySelectorAll('[data-category]');
-            dataCategory.forEach(elem => {
+            dataCategory.forEach((elem) => {
                 elem.addEventListener('click', () => {
                     const categoryValue = elem.getAttribute('data-category');
                     const nameValue = elem.textContent.replace(/\s+/g, ' ').trim();
@@ -310,6 +456,8 @@ window.addEventListener('DOMContentLoaded', () => {
                         addActiveClass();
                         showFilteredProducts(productsData);
                         addListenerOfSortSelect(productsData);
+
+                        showFilters(productsData);
                     } else {
                         removeUnnecessaryKeys(categoryValue);
                         sessionStorage.setItem(categoryValue, nameValue);
@@ -318,8 +466,8 @@ window.addEventListener('DOMContentLoaded', () => {
                 });
             });
         })
-        .catch(error => {
+        .catch((error) => {
             console.error('Error:', error);
             hideLoadingPattern();
         });
-})
+});
