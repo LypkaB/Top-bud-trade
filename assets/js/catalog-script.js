@@ -231,7 +231,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     const container = document.querySelector('.catalog__sidebar--filter');
-
     container.addEventListener('change', (e) => {
         const data = [...e.currentTarget.querySelectorAll('input[type="checkbox"]:checked'),].map((item) => {
             return {
@@ -272,22 +271,6 @@ window.addEventListener('DOMContentLoaded', () => {
                 </div>`;
 
             container.insertAdjacentHTML('beforeend', htmlContent);
-        });
-
-        container.addEventListener('click', function (event) {
-            if (!event.target.classList.contains('show-more')) return;
-
-            const button = event.target;
-            const listItems = button.parentNode.querySelectorAll('li');
-            const isExpanded = button.getAttribute('data-expanded') === 'true';
-
-            listItems.forEach((item, index) => {
-                if (index >= 5) item.classList.toggle('expanded');
-            });
-
-            button.textContent = isExpanded ? 'Показати більше' : 'Приховати';
-            button.setAttribute('data-expanded', !isExpanded);
-            button.classList.toggle('expanded');
         });
     }
 
@@ -464,6 +447,22 @@ window.addEventListener('DOMContentLoaded', () => {
                         showProductFromStorage();
                     }
                 });
+            });
+
+            container.addEventListener('click', function (event) {
+                if (!event.target.classList.contains('show-more')) return;
+
+                const button = event.target;
+                const listItems = button.parentNode.querySelectorAll('li');
+                const isExpanded = button.getAttribute('data-expanded') === 'true';
+
+                listItems.forEach((item, index) => {
+                    if (index >= 5) item.classList.toggle('expanded');
+                });
+
+                button.textContent = isExpanded ? 'Показати більше' : 'Приховати';
+                button.setAttribute('data-expanded', !isExpanded);
+                button.classList.toggle('expanded');
             });
         })
         .catch((error) => {
