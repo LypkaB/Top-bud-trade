@@ -4,8 +4,8 @@
     position: relative;
 
     .container {
-        padding-top: 10rem;
-        padding-bottom: 10rem;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
         text-align: center;
     }
 
@@ -25,5 +25,17 @@
         h2 {
             font-size: 24px;
         }
+    }
+
+    .foo_p {
+        li {
+            margin-top: 10px;
+        }
+    }
+
+    .foo_1 {
+        padding-left: 20px;
+        position: relative;
+        @include bulleted-list();
     }
 }
