@@ -10,7 +10,34 @@
     }
 
     h2 {
+        margin-bottom: 15px;
         cursor: default;
+    }
+
+    &__text {
+        margin-bottom: 40px;
+    }
+
+    &__list {
+        &-wrap {
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 40px;
+        }
+
+        font-size: 18px;
+        text-align: left;
+
+        li {
+            margin-top: 10px;
+        }
+
+        &--bulleted {
+            padding-left: 20px;
+            position: relative;
+            @include bulleted-list();
+        }
     }
 
     @media (max-width: 992px) {
@@ -25,17 +52,5 @@
         h2 {
             font-size: 24px;
         }
-    }
-
-    .foo_p {
-        li {
-            margin-top: 10px;
-        }
-    }
-
-    .foo_1 {
-        padding-left: 20px;
-        position: relative;
-        @include bulleted-list();
     }
 }
