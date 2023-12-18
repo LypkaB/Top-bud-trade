@@ -6,5 +6,8 @@
     "gulp-concat-css": "^3.1.0",
     "gulp-sass": "^5.1.0",
     "sass": "^1.66.0"
+  },
+  "dependencies": {
+    "gulp-sitemap": "^8.0.0"
   }
 }

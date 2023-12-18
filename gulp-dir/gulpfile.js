@@ -2,6 +2,9 @@ const {src, dest, watch, parallel, series} = require('gulp');
 const scss = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
 const concatCSS = require('gulp-concat-css');
+const sitemap = require('gulp-sitemap');
+
+
 const browserSync = require('browser-sync').create();
 const autoprefixerOptions = {
     overrideBrowserslist: ['last 3 versions', 'ie >= 10'],
@@ -91,4 +94,14 @@ function sync() {
     });
 }
 
-exports.default = parallel(series(funcArr), watching, sync);
+function generateSitemap() {
+    return src('../*.html', {
+        read: false
+    })
+        .pipe(sitemap({
+            siteUrl: 'https://topbudtrade.com.ua/'
+        }))
+        .pipe(dest('../'));
+}
+
+exports.default = parallel(series(funcArr), watching, sync, generateSitemap);
