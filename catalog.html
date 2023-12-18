@@ -332,29 +332,32 @@
                 <div class="recall__modal-close"></div>
             </div>
 
-            <form action="" class="recall__form">
+            <form action="./php/send_mail.php" method="post" class="recall__form">
+
                 <div class="recall__form-field">
-                    <label for="email">
+                    <label for="phone">
                         <span class="obligatory-field">Ваш номер телефону</span>
                     </label>
-                    <input id="email" type="text">
+                    <input id="phone" name="phone" type="text">
                 </div>
 
                 <div class="recall__form-field">
                     <label for="name">
                         <span class="obligatory-field">Ваше ім'я</span>
                     </label>
-                    <input id="name" type="text">
+                    <input id="name" name="name" type="text">
                 </div>
 
                 <div class="recall__form-field">
                     <label for="message">
                         <span>Зворотній зв'язок</span>
                     </label>
-                    <textarea id="message" spellcheck="false"></textarea>
+                    <textarea id="message" name="message" spellcheck="false"></textarea>
                 </div>
 
                 <input class="recall__form-send" type="submit" value="Надіслати">
+
+                <div class="recall__form-message"></div>
             </form>
         </div>
     </div>
