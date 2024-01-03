@@ -1033,12 +1033,26 @@ h4 {
 }
 
 .assortment__grid {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin: 0 -8px 40px;
+  padding: 0 8px;
+  display: grid;
+  gap: 16px;
+  grid-template-areas: "a b c" "a b e";
+}
+
+.assortment__grid .item_1 {
+  grid-area: a;
+}
+
+.assortment__grid .item_2 {
+  grid-area: b;
+}
+
+.assortment__grid .item_3 {
+  grid-area: c;
+}
+
+.assortment__grid .item_4 {
+  grid-area: e;
 }
 
 .assortment__grid * {
@@ -1210,24 +1224,8 @@ h4 {
 
 @media (max-width: 992px) {
   .assortment__grid {
-    row-gap: 16px;
-  }
-
-  .assortment__grid div:nth-child(1),
-  .assortment__grid div:nth-child(2) {
-    -ms-flex-preferred-size: 50%;
-    flex-basis: 50%;
-  }
-
-  .assortment__grid-items {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-column-gap: 16px;
-    -moz-column-gap: 16px;
-    column-gap: 16px;
-    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "a b" "c e";
   }
 }
 
@@ -1236,47 +1234,14 @@ h4 {
     padding: 15px 10px 10px;
   }
 
+  .assortment__grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: "a" "b" "c" "e";
+  }
+
   .assortment__title {
     font-size: 24px;
     margin-bottom: 15px;
-  }
-
-  .assortment__grid {
-    margin-bottom: 20px;
-  }
-
-  .assortment__grid div:nth-child(1),
-  .assortment__grid div:nth-child(2) {
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-  }
-
-  .assortment__grid-items {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-column-gap: initial;
-    -moz-column-gap: initial;
-    column-gap: initial;
-  }
-
-  .assortment__item .dropdown-chevron {
-    padding-right: 40px !important;
-  }
-
-  .assortment__item > ul > li:hover .assortment__item--dropdown-list {
-    max-height: initial;
-    -webkit-transition: max-height 1s ease-in-out;
-    transition: max-height 1s ease-in-out;
-  }
-
-  .assortment__item > ul > li .assortment__item--dropdown-list {
-    max-height: 0 !important;
-  }
-
-  .assortment__item > ul > li .list_open {
-    max-height: 300px !important;
   }
 }
 

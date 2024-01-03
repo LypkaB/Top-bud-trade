@@ -17,9 +17,26 @@
     }
 
     &__grid {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 -8px 40px;
+        padding: 0 8px;
+        display: grid;
+        gap: 16px;
+        grid-template-areas: "a b c" "a b e";
+
+        .item_1 {
+            grid-area: a;
+        }
+
+        .item_2 {
+            grid-area: b;
+        }
+
+        .item_3 {
+            grid-area: c;
+        }
+
+        .item_4 {
+            grid-area: e;
+        }
 
         * {
             color: $main-grafite;
@@ -137,20 +154,8 @@
 
     @media (max-width: 992px) {
         &__grid {
-            row-gap: 16px;
-
-            div {
-                &:nth-child(1),
-                &:nth-child(2) {
-                    flex-basis: 50%;
-                }
-            }
-
-            &-items {
-                flex-direction: row;
-                column-gap: 16px;
-                width: 100%;
-            }
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-areas: "a b" "c e";
         }
     }
 
@@ -159,46 +164,14 @@
             padding: 15px 10px 10px;
         }
 
+        &__grid {
+            grid-template-columns: 1fr;
+            grid-template-areas: "a" "b" "c" "e";
+        }
+
         &__title {
             font-size: 24px;
             margin-bottom: 15px;
-        }
-
-        &__grid {
-            margin-bottom: 20px;
-
-            div {
-                &:nth-child(1),
-                &:nth-child(2) {
-                    flex-basis: 100%;
-                }
-            }
-
-            &-items {
-                flex-direction: column;
-                column-gap: initial;
-            }
-        }
-
-        &__item {
-            .dropdown-chevron {
-                padding-right: 40px !important;
-            }
-
-            > ul > li {
-                &:hover .assortment__item--dropdown-list {
-                    max-height: initial;
-                    transition: max-height 1s ease-in-out;
-                }
-
-                .assortment__item--dropdown-list {
-                    max-height: 0 !important;
-                }
-
-                .list_open {
-                    max-height: 300px !important;
-                }
-            }
         }
     }
 }
