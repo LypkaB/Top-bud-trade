@@ -4,7 +4,6 @@ const autoprefixer = require('gulp-autoprefixer');
 const concatCSS = require('gulp-concat-css');
 const sitemap = require('gulp-sitemap');
 
-
 const browserSync = require('browser-sync').create();
 const autoprefixerOptions = {
     overrideBrowserslist: ['last 3 versions', 'ie >= 10'],
@@ -88,9 +87,9 @@ function watching() {
 
 function sync() {
     browserSync.init({
-        server: {
-            baseDir: '../'
-        }
+        proxy: 'http://top-bud-trade:8888/',
+        port: 3000,
+        open: true
     });
 }
 
