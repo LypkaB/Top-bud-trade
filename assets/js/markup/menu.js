@@ -4,7 +4,7 @@ export function createMenu(data) {
     for (let category in data) {
         if (data.hasOwnProperty(category)) {
             menu += `<li class="header__menu--list-dropdown-item">
-          <a href="catalog.html" class="dropdown-chevron item" data-group="nazva_grupi_1" data-category="${category}">
+          <a href="catalog" class="dropdown-chevron item" data-group="nazva_grupi_1" data-category="${category}">
           ${category}
           </a>
           <button class="next-btn--first"></button>`;
@@ -26,7 +26,7 @@ function createSubmenu(data) {
             const toggle = !!data[category]?.length;
             const classEl = toggle ? 'dropdown-chevron' : '';
             menu += ` <li class="header__menu--list-dropdown-item">
-        <a href="catalog.html" class="${classEl} item"
+        <a href="catalog" class="${classEl} item"
         data-group="nazva_grupi_2" data-category="${category}">
             ${category}
         </a>`;
@@ -49,7 +49,7 @@ function createBottomMenu(items) {
     let menu = '<ul class=\'header__menu--list-dropdown-third\'>';
     items.forEach((item) => {
         menu += `<li>
-      <a href="catalog.html" data-group="nazva_grupi_3" data-category="${item}" class="item">
+      <a href="catalog" data-group="nazva_grupi_3" data-category="${item}" class="item">
           ${item}
       </a>
   </li>`;

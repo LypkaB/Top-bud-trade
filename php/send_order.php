@@ -2,8 +2,8 @@
 $json_data = file_get_contents('php://input');
 $data = json_decode($json_data, true);
 
-$to_email = 'ваш_email@example.com'; 
-$subject = 'Новый заказ';
+$to_email = 'ваш_email@example.com';
+$subject = 'Нове замовленния з сайту';
 
 $message = "Ім'я: {$data['name']}\n";
 $message .= "Email: {$data['email']}\n";
@@ -20,7 +20,7 @@ foreach ($data['products'] as $product) {
     $message .= "Номер: {$product['nomer']}, Назва: {$product['nazva']}, Ціна: {$product['cina']}, Кількість: {$product['count']}\n";
 }
 
-$headers = 'From: webmaster@example.com' . "\r\n" .
+$headers = 'From: TopBudTrade_website' . "\r\n" .
     'Reply-To: webmaster@example.com' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 

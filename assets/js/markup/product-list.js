@@ -32,7 +32,7 @@ function createSubmenu(data) {
       const toggle = !!data[category]?.length;
       const classEl = toggle ? "dropdown-chevron" : "";
       menu += `<li class="assortment__item--dropdown">
-      <a href="catalog.html" class="${classEl} item" data-group="nazva_grupi_2" data-category="${category}">${category}</a>`;
+      <a href="catalog" class="${classEl} item" data-group="nazva_grupi_2" data-category="${category}">${category}</a>`;
       if (toggle)
         menu += '<button class="assortment__item--dropdown-btn"></button>';
       menu += createBottomMenu(data[category]);
@@ -49,7 +49,7 @@ function createBottomMenu(items) {
   }
   let menu = "<ul class='assortment__item--dropdown-list'>";
   items.forEach((item) => {
-    menu += `<li><a href="catalog.html" data-group="nazva_grupi_3" data-category="${item}" class="item">${item}</a></li>`;
+    menu += `<li><a href="catalog" data-group="nazva_grupi_3" data-category="${item}" class="item">${item}</a></li>`;
   });
   menu += "</ul>";
   return menu;
