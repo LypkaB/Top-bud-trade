@@ -22,8 +22,10 @@ const stylesPaths = {
     contactsCss: 'contacts.css',
     catalogScss: '../assets/scss/pages/catalog.scss',
     catalogCss: 'catalog.css',
+    basketScss: '../assets/scss/pages/basket.scss',
+    basketCss: 'basket.css',
 }
-const funcArr = [compileStylesMain, compileStylesDelivery, compileStylesReturns, compileStylesAbout, compileStylesContacts, compileStylesCatalog];
+const funcArr = [compileStylesMain, compileStylesDelivery, compileStylesReturns, compileStylesAbout, compileStylesContacts, compileStylesCatalog, compileStylesBasket];
 
 function compileStylesMain() {
     return src(stylesPaths.mainScss)
@@ -75,6 +77,15 @@ function compileStylesCatalog() {
         .pipe(scss().on('error', scss.logError))
         .pipe(autoprefixer(autoprefixerOptions))
         .pipe(concatCSS(stylesPaths.catalogCss))
+        .pipe(dest('../assets/css/'))
+        .pipe(browserSync.stream());
+}
+
+function compileStylesBasket() {
+    return src(stylesPaths.basketScss)
+        .pipe(scss().on('error', scss.logError))
+        .pipe(autoprefixer(autoprefixerOptions))
+        .pipe(concatCSS(stylesPaths.basketCss))
         .pipe(dest('../assets/css/'))
         .pipe(browserSync.stream());
 }
