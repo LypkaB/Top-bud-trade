@@ -182,10 +182,10 @@
                             <label for="city" class="label">Місто</label>
                             <input type="text" class="form-control" name="city" id="city">
                         </div>
-                        <div class="form-group my-required">
+                        <!--<div class="form-group my-required">
                             <label for="addresses" class="label">Адреса</label>
                             <input type="text" class="form-control" name="addresses" id="addresses">
-                        </div>
+                        </div>-->
                     </div>
                     <div>
                         <div class="form-header">
@@ -194,19 +194,24 @@
                         <div class="form-group">
                             <div class="text">Нова Пошта</div>
                             <label for="novaposhta" class="field">
-                                <input type="radio" name="shipping_method" value="novaposhta" id="novaposhta">
-                                Адресна доставка курʼєром
+                                <input type="radio" name="shipping_method" value="Нова пошта" id="novaposhta"
+                                       checked="checked">
+                                Доставка
                             </label>
                             <div class="text">SAT</div>
                             <label for="sat" class="field">
-                                <input type="radio" name="shipping_method" value="sat" id="sat">
-                                Доставка SAT
+                                <input type="radio" name="shipping_method" value="SAT" id="sat">
+                                Доставка
                             </label>
                             <div class="text">Delivery</div>
                             <label for="delivery" class="field">
-                                <input type="radio" name="shipping_method" value="delivery" id="delivery"
-                                    checked="checked">
-                                Доставка Delivery
+                                <input type="radio" name="shipping_method" value="Delivery" id="delivery">
+                                Доставка
+                            </label>
+                            <div class="text">Адресна доставка</div>
+                            <label for="address" class="field">
+                                <input type="radio" name="shipping_method" value="адресна доставка" id="address">
+                                Доставка
                             </label>
                         </div>
                         <div class="form-header">

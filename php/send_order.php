@@ -2,7 +2,7 @@
 $json_data = file_get_contents('php://input');
 $data = json_decode($json_data, true);
 
-$to_email = 'ваш_email@example.com';
+$to_email = 'topbudtrade1@gmail.com';
 $subject = 'Нове замовленния з сайту';
 
 $message = "Ім'я: {$data['name']}\n";
@@ -10,7 +10,7 @@ $message .= "Email: {$data['email']}\n";
 $message .= "Телефон: {$data['tel']}\n";
 $message .= "Регіон: {$data['region']}\n";
 $message .= "Місто: {$data['city']}\n";
-$message .= "Адреса: {$data['addresses']}\n";
+
 $message .= "Спосіб доставки: {$data['shipping_method']}\n";
 $message .= "Спосіб оплати: {$data['payment_method']}\n";
 $message .= "Коментар: {$data['comment']}\n";
